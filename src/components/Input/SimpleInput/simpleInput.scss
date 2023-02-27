@@ -1,0 +1,14 @@
+.SimpleInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 25px;
+  position: relative;
+
+  &__error {
+    position: absolute;
+    bottom: -20px;
+  }
+}
+
+// TODO: cambiar al color de error cuando este mal el form <27-02-23, yo> //
