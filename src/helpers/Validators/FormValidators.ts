@@ -8,9 +8,9 @@ export const FormValidator = (
   actual: IFormValidationsErrors,
   validations: IFormValidateData,
   name: string,
-  value: string | number | boolean
+  value: string | number | boolean,
+  customMessagges?: IFormValidationsErrors
 ): IFormValidationsErrors => {
-
   const rules: IFormValidations = validations[name];
   if (!rules) return {};
 
@@ -26,13 +26,18 @@ export const FormValidator = (
     String(value).length <= 0
   ) {
     actual[name].required =
-      generateDefaultErrorMessagge(name).required.messagge;
+      customMessagges && customMessagges[name]?.required
+        ? customMessagges![name].required
+        : defaultErrorMessagge(name).required.messagge;
   } else {
     delete actual[name].required;
   }
 
   if (rulesByInput.includes("regex") && !rules["regex"]!.test(String(value))) {
-    actual[name].regex = generateDefaultErrorMessagge(name).regex.messagge;
+    actual[name].regex =
+      customMessagges && customMessagges[name]?.regex
+        ? customMessagges![name].regex
+        : defaultErrorMessagge(name).regex.messagge;
   } else {
     delete actual[name].regex;
   }
@@ -42,25 +47,28 @@ export const FormValidator = (
     rules["email"] &&
     !emailRegex.test(String(value))
   ) {
-    actual[name].email = generateDefaultErrorMessagge(name).email.messagge;
+    actual[name].email =
+      customMessagges && customMessagges[name]?.email
+        ? customMessagges![name].email
+        : defaultErrorMessagge(name).email.messagge;
   } else {
     delete actual[name].email;
   }
 
   if (rulesByInput.includes("min") && String(value).length <= rules["min"]!) {
-    actual[name].min = generateDefaultErrorMessagge(
-      name,
-      rules["min"]
-    ).min.messagge;
+    actual[name].min =
+      customMessagges && customMessagges[name]?.min
+        ? customMessagges![name].min
+        : defaultErrorMessagge(name, rules["min"]).min.messagge;
   } else {
     delete actual[name].min;
   }
 
   if (rulesByInput.includes("max") && String(value).length >= rules["max"]!) {
-    actual[name].max = generateDefaultErrorMessagge(
-      name,
-      rules["max"]
-    ).max.messagge;
+    actual[name].max =
+      customMessagges && customMessagges[name]?.max
+        ? customMessagges![name].max
+        : defaultErrorMessagge(name, rules["max"]).max.messagge;
   } else {
     delete actual[name].max;
   }
@@ -68,7 +76,7 @@ export const FormValidator = (
   return actual;
 };
 
-const generateDefaultErrorMessagge = (
+const defaultErrorMessagge = (
   name: string,
   value?: string | number
 ): IFormValidationsErrors => {
