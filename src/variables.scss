@@ -2,11 +2,16 @@
 
 :root {
   //Colors
+  --main_color_700: #921818;
+  --main_color_500: #f32828;
+  --main_color_300: #f87e7e;
+
+  --secondary_color_700: #3f237b;
   --secondary_color_500: #7d45f5;
   --secondary_color_300: #b18ff9;
 
-  // TODO: Agregar el resto de colores y fonts <27-02-23, yourname> //
   --neutral_white: white;
+  --neutral_black: black;
 
   --grey_100: #dcdbdb;
   --grey_200: #b9b8b8;
@@ -18,6 +23,7 @@
   --grey_800: #201f1f;
   --grey_900: #100f0f;
 
+  // TODO: Agregar el resto de fonts <27-02-23, yourname> //
   //Text Fonts
   --text_medium_small: 600 14px "Nunito", Arial, sans-serif;
 

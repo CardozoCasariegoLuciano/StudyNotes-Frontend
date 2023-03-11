@@ -27,6 +27,7 @@ const SimpleInput = (props: SimpleInputPropType) => {
     : `Write your ${props.name} here`;
 
   // TODO: cambiar al color de error cuando este mal el form <27-02-23, yo> //
+  // TODO: Agregar los iconos al final, tanto del ojo si es una pass como de la X para limpiar el campo <11-03-23, yourname> //
 
   return (
     <div className="SimpleInput" style={props.styles}>
