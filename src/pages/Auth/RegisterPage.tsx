@@ -29,6 +29,7 @@ const RegisterPage = () => {
           onChange={form.onInputChange}
           onBlur={form.onBlur}
           errorMessage={form.formErrors.email}
+          onCleanInput={form.onCleanInput}
         />
         <SimpleInput
           type="password"
@@ -38,6 +39,7 @@ const RegisterPage = () => {
           onChange={form.onInputChange}
           onBlur={form.onBlur}
           errorMessage={form.formErrors.password}
+          onCleanInput={form.onCleanInput}
         />
         <SimpleButton disabled={form.hasErrors()}>Sing In</SimpleButton>
       </form>

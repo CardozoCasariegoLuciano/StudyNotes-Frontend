@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import "../../../variables.scss";
 
-export const InputContainer = styled.label`
+interface InputContainer {
+  error?: boolean;
+}
+
+export const InputContainer = styled.label<InputContainer>`
   padding: 10px;
   border-width: var(--input_border-width);
   border-style: solid;
-  border-color: var(--grey_100);
+  border-color: ${(props) =>
+    !props.error ? "var(--grey_100)" : "var(--main_color_700)"};
   border-radius: var(--input_border-radius);
   background: transparent;
   width: 100%;
@@ -13,4 +18,3 @@ export const InputContainer = styled.label`
   align-items: center;
   gap: 10px;
 `;
-

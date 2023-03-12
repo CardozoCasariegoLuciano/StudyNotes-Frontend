@@ -83,7 +83,7 @@ const defaultErrorMessagge = (
   return {
     required: { messagge: `${name} field is requiered` },
     regex: { messagge: `${name} not match the regex` },
-    email: { messagge: `${name} is not a valid email` },
+    email: { messagge: `this field is not a valid email` },
     min: { messagge: `${name} must have more than ${value} characters` },
     max: { messagge: `${name} must have less than ${value} characters` },
   };

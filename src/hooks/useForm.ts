@@ -90,6 +90,11 @@ export const useForm = <T extends IFormState>(
     setFormState(initialForm);
   };
 
+  const onCleanInput = (name: string) => {
+    setFormState((actual) => ({ ...actual, [name]: "" }));
+    setFormErrors((actual) => ({ ...actual, [name]: {} }));
+  };
+
   return {
     onSubmit,
     ...formState,
@@ -99,5 +104,6 @@ export const useForm = <T extends IFormState>(
     onInputChange,
     onBlur,
     onResetForm,
+    onCleanInput,
   };
 };

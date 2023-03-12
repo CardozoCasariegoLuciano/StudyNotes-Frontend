@@ -10,6 +10,10 @@
     bottom: -20px;
     color: var(--main_color_500);
   }
+
+  &__SVG {
+    max-height: 18px;
+  }
 }
 
-// TODO: cambiar al color de error cuando este mal el form <27-02-23, yo> //
+// TODO: Ver si lo de frex grow ayuda a que los iconos de los inputs no cambien cuando sale la X para limpiar el field <12-03-23, yourname> //
