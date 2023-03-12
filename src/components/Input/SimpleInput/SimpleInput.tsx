@@ -15,13 +15,16 @@ type SimpleInputPropType = {
   icon?: string;
   errorMessage?: { [key: string]: string };
   onCleanInput: (name: string) => void;
+  label?: string;
 };
 
 const SimpleInput = (props: SimpleInputPropType) => {
   const [svgEye, setSvgEye] = useState("EyeOpen");
   const [inputType, setInputType] = useState(props.type);
 
-  const labelName = props.name.charAt(0).toUpperCase() + props.name.slice(1);
+  const labelName = props.label
+    ? props.label
+    : props.name.charAt(0).toUpperCase() + props.name.slice(1);
   const inputID = `id_${props.name}`;
   const errorMessagge =
     props.errorMessage &&
@@ -42,32 +45,38 @@ const SimpleInput = (props: SimpleInputPropType) => {
 
   return (
     <div className="SimpleInput" style={props.styles}>
-      <label htmlFor={inputID}>{labelName}</label>
-      <InputContainer error={!!errorMessagge}>
-        <Svg svgName={props.icon} />
-        <Input
-          type={inputType}
-          placeholder={inputPlaceholder}
-          name={props.name}
-          autoComplete="off"
-          id={inputID}
-          value={props.value}
-          onChange={props.onChange}
-          onBlur={props.onBlur}
-        />
-        {props.value && props.type === "password" && (
-          <div onClick={() => toggleInputType()} className="SimpleInput__SVG">
-            <Svg svgName={svgEye} />
-          </div>
-        )}
-        {props.value && (
-          <div
-            onClick={() => props.onCleanInput(props.name)}
-            className="SimpleInput__SVG"
-          >
-            <Svg svgName="X" />
-          </div>
-        )}
+      <label className="SimpleInput__label" htmlFor={inputID}>
+        {labelName}
+      </label>
+      <InputContainer error={!!errorMessagge} spaceBetween={true}>
+        <div className="SimpleInput__input">
+          <Svg svgName={props.icon} />
+          <Input
+            type={inputType}
+            placeholder={inputPlaceholder}
+            name={props.name}
+            autoComplete="off"
+            id={inputID}
+            value={props.value}
+            onChange={props.onChange}
+            onBlur={props.onBlur}
+          />
+        </div>
+        <div className="SimpleInput__actions">
+          {props.value && props.type === "password" && (
+            <div onClick={() => toggleInputType()} className="SimpleInput__SVG">
+              <Svg svgName={svgEye} />
+            </div>
+          )}
+          {props.value && (
+            <div
+              onClick={() => props.onCleanInput(props.name)}
+              className="SimpleInput__SVG"
+            >
+              <Svg svgName="X" />
+            </div>
+          )}
+        </div>
       </InputContainer>
       {errorMessagge && <p className="SimpleInput__error">{errorMessagge}</p>}
     </div>

@@ -5,6 +5,7 @@ export interface IFormValidations {
   regex?: RegExp;
   min?: number;
   max?: number;
+  equalTo?: string;
 }
 
 export interface IFormValidationsErrors {

@@ -3,6 +3,7 @@ import "../../../variables.scss";
 
 interface InputContainer {
   error?: boolean;
+  spaceBetween?: boolean;
 }
 
 export const InputContainer = styled.label<InputContainer>`
@@ -16,5 +17,7 @@ export const InputContainer = styled.label<InputContainer>`
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: ${(props) =>
+    props.spaceBetween ? "space-between" : "start"};
   gap: 10px;
 `;

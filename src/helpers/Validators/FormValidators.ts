@@ -8,7 +8,8 @@ export const FormValidator = (
   actual: IFormValidationsErrors,
   validations: IFormValidateData,
   name: string,
-  value: string | number | boolean,
+  value: string | number,
+  optional?: string | number,
   customMessagges?: IFormValidationsErrors
 ): IFormValidationsErrors => {
   const rules: IFormValidations = validations[name];
@@ -23,7 +24,7 @@ export const FormValidator = (
   if (
     rulesByInput.includes("required") &&
     rules["required"] &&
-    String(value).length <= 0
+    String(value).length === 0
   ) {
     actual[name].required =
       customMessagges && customMessagges[name]?.required
@@ -73,7 +74,26 @@ export const FormValidator = (
     delete actual[name].max;
   }
 
+  if (rulesByInput.includes("equalTo") && !isEqualTo(value, optional)) {
+    actual[name].equalTo =
+      customMessagges && customMessagges[name]?.equalTo
+        ? customMessagges![name].equalTo
+        : defaultErrorMessagge(name, rules["equalTo"]).equalTo.messagge;
+  } else {
+    delete actual[name].equalTo;
+  }
+
   return actual;
+};
+
+const isEqualTo = (
+  value: string | number,
+  toCompare?: string | number
+): boolean => {
+  if (!toCompare) return true;
+  if (toCompare != value) return false;
+
+  return true;
 };
 
 const defaultErrorMessagge = (
@@ -86,6 +106,7 @@ const defaultErrorMessagge = (
     email: { messagge: `this field is not a valid email` },
     min: { messagge: `${name} must have more than ${value} characters` },
     max: { messagge: `${name} must have less than ${value} characters` },
+    equalTo: { messagge: `${name} must have equal to ${value}` },
   };
 };
 
