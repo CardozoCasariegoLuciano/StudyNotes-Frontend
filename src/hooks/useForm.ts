@@ -97,14 +97,10 @@ export const useForm = <T extends IFormState>(
     });
   };
 
-  const onSubmit = (ev: ChangeEvent<HTMLFormElement>) => {
+  const checkFormErrors = (ev: ChangeEvent<HTMLFormElement>) => {
     ev.preventDefault();
     setForceChange((actual) => !actual);
     onSubmitErrors();
-
-    if (!hasErrors()) {
-      onResetForm();
-    }
   };
 
   const onResetForm = () => {
@@ -117,7 +113,7 @@ export const useForm = <T extends IFormState>(
   };
 
   return {
-    onSubmit,
+    checkFormErrors,
     ...formState,
     formState,
     formErrors,
