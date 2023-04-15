@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap");
+
+:root {
+  //Colors
+  --main_color_700: #921818;
+  --main_color_500: #f32828;
+  --main_color_300: #f87e7e;
+
+  --secondary_color_700: #3f237b;
+  --secondary_color_500: #7d45f5;
+  --secondary_color_300: #b18ff9;
+
+  --neutral_white: white;
+  --neutral_black: black;
+
+  --grey_100: #dcdbdb;
+  --grey_200: #b9b8b8;
+  --grey_300: #959494;
+  --grey_400: #727171;
+  --grey_500: #4f4d4d;
+  --grey_600: #3f3e3e;
+  --grey_700: #2f2e2e;
+  --grey_800: #201f1f;
+  --grey_900: #100f0f;
+
+  // TODO: Agregar el resto de fonts <27-02-23, yourname> //
+  //Text Fonts
+  --text_medium_small: 600 14px "Nunito", Arial, sans-serif;
+  --text_normal_tiny: 400 12px "Nunito", Arial, sans-serif;
+
+  //Input border
+  --input_border-width: 1px 0px 1px 1px;
+  --input_border-radius: 8px;
+}

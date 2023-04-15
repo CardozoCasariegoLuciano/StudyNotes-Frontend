@@ -1,8 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import StudyNoteApp from "./StudyNoteApp";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    Init
-  </React.StrictMode>,
-)
+    <BrowserRouter>
+      <StudyNoteApp />
+    </BrowserRouter>
+  </React.StrictMode>
+);

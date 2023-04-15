@@ -1,0 +1,36 @@
+.SimpleInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 25px;
+  position: relative;
+
+  &__label {
+    font: var(--text_medium_small);
+  }
+
+  &__error {
+    position: absolute;
+    bottom: -20px;
+    color: var(--main_color_500);
+    font: var(--text_medium_small);
+    margin-left: 10px;
+  }
+
+  &__SVG {
+    max-height: 18px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
