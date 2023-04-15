@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useShowAlert tests cases ShowAlert mush display the alert component 1`] = `
+<div
+  style={
+    {
+      "backgroundColor": "tomato",
+      "border": "1px solid red",
+      "borderRadius": "8px",
+      "color": "white",
+      "display": "flex",
+      "gap": "15px",
+      "justifyContent": "space-between",
+      "padding": "5px 20px",
+    }
+  }
+>
+  <p>
+    TExT
+     
+  </p>
+  <span
+    onClick={[Function]}
+    style={
+      {
+        "cursor": "pointer",
+      }
+    }
+  >
+    X
+  </span>
+</div>
+`;
