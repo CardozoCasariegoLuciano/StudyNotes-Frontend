@@ -5,10 +5,12 @@ import SimpleInput from "../../components/FormsElements/Input/SimpleInput";
 import Logo from "../../components/Logo/Logo";
 import { SimpleButton } from "../../components/StyledComponents/Button/SimpleButton";
 import { useForm } from "../../hooks/useForm";
+import useLogin from "../../hooks/useLogin";
 import { useShowAlert } from "../../hooks/useShowAlert";
 
 const LoginPage = () => {
   const { showAlert, showModal } = useShowAlert();
+  const { login } = useLogin();
   const navigate = useNavigate();
   const form = useForm(
     {
@@ -25,13 +27,13 @@ const LoginPage = () => {
     form.checkFormErrors(eve);
     if (form.hasErrors()) return;
 
-    //const error = await register(form.formState);
-    //if (!error) {
-    //form.onResetForm();
-    //navigate("/home");
-    //} else {
-    //showModal(error.message);
-    //}
+    const error = await login(form.formState);
+    if (!error) {
+      form.onResetForm();
+      navigate("/home");
+    } else {
+      showModal(error.message);
+    }
   };
   return (
     <>
@@ -61,12 +63,12 @@ const LoginPage = () => {
                 errorMessage={form.formErrors.password}
                 onCleanInput={form.onCleanInput}
               />
-              {showAlert()}
+              <div className="auth_alertContainer">{showAlert()}</div>
             </div>
             <div className="auth-login__actions">
               <div className="auth-login__actions--buttons">
                 <SimpleButton disabled={form.hasErrors()}>Login</SimpleButton>
-                <SimpleCheckBox label="Remember me"/>
+                <SimpleCheckBox label="Remember me" />
               </div>
               <div className="auth-login__actions--links">
                 <Link to="/auth/register">Don't have an account yet?</Link>
