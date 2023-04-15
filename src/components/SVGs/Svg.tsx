@@ -135,7 +135,7 @@ const Svg = ({ svgName, svgColor }: SvgPropType) => {
       return EyeClose(svgColor);
 
     case "email":
-      return Email(svgColor);
+      return Email(svgColor!);
 
     default:
       return <></>;

@@ -16,7 +16,7 @@ const initialErrors = (form: IFormState) => {
 
 export const useForm = <T extends IFormState>(
   initialForm: T,
-  validations: IFormValidateData,
+  validations?: IFormValidateData,
   customMessagges?: IFormValidationsErrors
 ) => {
   const [formState, setFormState] = useState<T>(initialForm);
@@ -37,13 +37,14 @@ export const useForm = <T extends IFormState>(
     if (value.length <= 0) {
       setFormErrors((actual) => ({ ...actual, [name]: {} }));
     } else {
+      const optional = validations && formState[validations![name]?.equalTo!];
       setFormErrors(
         FormValidator(
           formErrors,
-          validations,
           name,
           value,
-          formState[validations[name]!.equalTo!],
+          validations!,
+          optional,
           customMessagges
         )
       );
@@ -54,14 +55,15 @@ export const useForm = <T extends IFormState>(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = event.target;
+    const optional = validations && formState[validations[name]?.equalTo!];
     onInputChange(event);
     setFormErrors(
       FormValidator(
         formErrors,
-        validations,
         name,
         value,
-        formState[validations[name]!.equalTo!],
+        validations!,
+        optional,
         customMessagges
       )
     );
@@ -79,18 +81,20 @@ export const useForm = <T extends IFormState>(
     return result;
   };
 
-  const onSubmitErrors = () => {
+  const _findFormErrors = () => {
     const formStateNames = Object.keys(formState);
 
     formStateNames.forEach((name) => {
+      {/* TODO: Ver como manejar eso del equalTo, esta raro asi dom 09 abr 2023 12:54:52  */}
+      const optional = validations && formState[validations![name]?.equalTo!];
       const value = formState[name];
       setFormErrors(
         FormValidator(
           formErrors,
-          validations,
           name,
           value,
-          formState[validations[name]!.equalTo!],
+          validations!,
+          optional,
           customMessagges
         )
       );
@@ -100,7 +104,7 @@ export const useForm = <T extends IFormState>(
   const checkFormErrors = (ev: ChangeEvent<HTMLFormElement>) => {
     ev.preventDefault();
     setForceChange((actual) => !actual);
-    onSubmitErrors();
+    _findFormErrors();
   };
 
   const onResetForm = () => {

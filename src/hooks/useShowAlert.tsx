@@ -35,7 +35,7 @@ export const useShowAlert = (time: number = 5500) => {
   const showModal = (value: string): void => {
     timeoutRef.current && clearInterval(timeoutRef.current);
     setModal({ isVisible: true, text: value });
-    timeoutRef.current = setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       cleanAlert();
     }, time);
   };

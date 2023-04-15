@@ -6,12 +6,13 @@ import {
 
 export const FormValidator = (
   actual: IFormValidationsErrors,
-  validations: IFormValidateData,
   name: string,
   value: string | number,
+  validations?: IFormValidateData,
   optional?: string | number,
   customMessagges?: IFormValidationsErrors
 ): IFormValidationsErrors => {
+  if (!validations) return {};
   const rules: IFormValidations = validations[name];
   if (!rules) return {};
 
