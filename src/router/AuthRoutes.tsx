@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import LoginPage from "../pages/Auth/LoginPage";
 import RegisterPage from "../pages/Auth/RegisterPage";
 
 const AuthRoutes = () => {
@@ -6,6 +7,7 @@ const AuthRoutes = () => {
     <>
       <Routes>
         <Route path="register" element={<RegisterPage />} />
+        <Route path="login" element={<LoginPage />} />
       </Routes>
     </>
   );

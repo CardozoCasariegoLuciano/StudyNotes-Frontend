@@ -2,12 +2,12 @@ import Logo from "../../components/Logo/Logo";
 import "./authStyles.scss";
 import "../../styles.scss";
 import { SimpleButton } from "../../components/StyledComponents/Button/SimpleButton";
-import SimpleInput from "../../components/Input/SimpleInput/SimpleInput";
 import { useForm } from "../../hooks/useForm";
 import { Link, useNavigate } from "react-router-dom";
 import { ChangeEvent } from "react";
 import useRegister from "../../hooks/useRegister";
 import { useShowAlert } from "../../hooks/useShowAlert";
+import SimpleInput from "../../components/FormsElements/Input/SimpleInput";
 
 const RegisterPage = () => {
   const { showAlert, showModal } = useShowAlert();
@@ -45,7 +45,7 @@ const RegisterPage = () => {
     <div className="auth">
       <div className="auth__container">
         <Logo margin="20px 0px 50px 0px" />
-        <form onSubmit={submit}>
+        <form className="register_form" onSubmit={submit}>
           <div className="auth_inputs">
             <SimpleInput
               type="text"
@@ -92,7 +92,7 @@ const RegisterPage = () => {
             />
             {showAlert()}
           </div>
-          <div className="auth__actions">
+          <div className="auth-register__actions">
             <SimpleButton disabled={form.hasErrors()}>Sing In</SimpleButton>
             <Link to="/auth/login">Have an account yet?</Link>
           </div>

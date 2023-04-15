@@ -1,23 +1,8 @@
-import {
-  fireEvent,
-  render as renderTLR,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
 import axios from "axios";
-import React, { ReactElement } from "react";
-import { BrowserRouter } from "react-router-dom";
+import React from "react";
 import RegisterPage from "../../../src/pages/Auth/RegisterPage";
-
-interface RenderOptions {
-  route?: string;
-}
-
-function render(component: ReactElement, options?: RenderOptions) {
-  const { route = "/" } = options || {};
-  window.history.pushState({}, "Test page", route);
-  return renderTLR(<BrowserRouter>{component}</BrowserRouter>);
-}
+import { render } from "../../testHelpers/functions";
 
 afterEach(() => {
   jest.resetAllMocks();
@@ -59,7 +44,7 @@ describe("RegisterPage test cases", () => {
     render(<RegisterPage />, { route: "/auth/register" });
 
     const singInButton = screen.getByText(/sing in/i);
-    //Empty value on form inputs
+    //Empty content on form inputs
 
     fireEvent.click(singInButton);
     expect(axiosPostSpy).toHaveBeenCalledTimes(0);

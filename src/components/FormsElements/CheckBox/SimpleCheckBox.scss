@@ -1,0 +1,10 @@
+.SimpleCheckBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  label {
+    cursor: pointer;
+  }
+}
