@@ -7,10 +7,18 @@ export type RegisterFormData = {
   confirmation: string;
 };
 
+export type LoginFormData = {
+  email: string;
+  password: string;
+};
+
 export type RegisterResult = {
   register: (formData: RegisterFormData) => Promise<APIError | null>;
 };
 
+export type LoginResult = {
+  login: (formData: LoginFormData) => Promise<APIError | null>;
+};
 
 export interface APISuccessAuth {
   data: {
