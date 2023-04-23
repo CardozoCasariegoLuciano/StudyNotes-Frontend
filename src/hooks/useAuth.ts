@@ -1,14 +1,37 @@
 import axios, { AxiosError } from "axios";
 import { UrlBank } from "../helpers/URLs";
 import {
-  APISuccessAuth,
+  APISuccessLogin,
+  APISuccessRegister,
+  AuthReuslt,
+  LoginFormData,
   RegisterFormData,
-  RegisterResult,
 } from "../interfaces/API_auth.interface";
 import { APIError } from "../interfaces/API_response.interface";
 
-const useRegister = (): RegisterResult => {
+const useAuth = (): AuthReuslt => {
   let apiError: APIError | null = null;
+
+  const login = async (loginData: LoginFormData): Promise<APIError | null> => {
+    try {
+      const resp = await axios.post(UrlBank.auth.login, loginData);
+      const data = resp.data as APISuccessLogin;
+
+      const user = {
+        name: data.data.userName,
+        email: data.data.email,
+      };
+
+      localStorage.setItem("token", JSON.stringify(data.data.token));
+      localStorage.setItem("user", JSON.stringify(user));
+
+      apiError = null;
+    } catch (err) {
+      const axiosError = err as AxiosError;
+      apiError = axiosError.response?.data as APIError;
+    }
+    return apiError;
+  };
 
   const register = async (
     formData: RegisterFormData
@@ -22,7 +45,7 @@ const useRegister = (): RegisterResult => {
       };
 
       const resp = await axios.post(UrlBank.auth.register, registerData);
-      const data = resp.data as APISuccessAuth;
+      const data = resp.data as APISuccessRegister;
 
       localStorage.setItem("token", JSON.stringify(data.data.token));
       localStorage.setItem(
@@ -38,7 +61,11 @@ const useRegister = (): RegisterResult => {
     return apiError;
   };
 
-  return { register };
+  {
+    /* TODO: LogOut dom 23 abr 2023 11:46:13  */
+  }
+
+  return { login, register };
 };
 
-export default useRegister;
+export default useAuth;

@@ -5,13 +5,13 @@ import { SimpleButton } from "../../components/StyledComponents/Button/SimpleBut
 import { useForm } from "../../hooks/useForm";
 import { Link, useNavigate } from "react-router-dom";
 import { ChangeEvent } from "react";
-import useRegister from "../../hooks/useRegister";
 import { useShowAlert } from "../../hooks/useShowAlert";
 import SimpleInput from "../../components/FormsElements/Input/SimpleInput";
+import useAuth from "../../hooks/useAuth";
 
 const RegisterPage = () => {
   const { showAlert, showModal } = useShowAlert();
-  const { register } = useRegister();
+  const { register } = useAuth();
   const navigate = useNavigate();
   const form = useForm(
     {
