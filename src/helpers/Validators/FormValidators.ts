@@ -1,8 +1,5 @@
 import { IFormValidateData } from "../../interfaces/Forms.interface";
-import {
-  IFormValidations,
-  IFormValidationsErrors,
-} from "../../interfaces/Validator.interface";
+import { IFormValidations, IFormValidationsErrors } from "../../interfaces/Validator.interface";
 
 export const FormValidator = (
   actual: IFormValidationsErrors,

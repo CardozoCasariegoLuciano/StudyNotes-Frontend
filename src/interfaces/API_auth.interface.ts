@@ -12,17 +12,24 @@ export type LoginFormData = {
   password: string;
 };
 
-export type RegisterResult = {
+export type AuthReuslt = {
+  login: (formData: LoginFormData) => Promise<APIError | null>;
   register: (formData: RegisterFormData) => Promise<APIError | null>;
 };
 
-export type LoginResult = {
-  login: (formData: LoginFormData) => Promise<APIError | null>;
-};
-
-export interface APISuccessAuth {
+export interface APISuccessRegister {
   data: {
     token: string;
+  };
+  message: string;
+  message_type: string;
+}
+
+export interface APISuccessLogin {
+  data: {
+    token: string;
+    userName: string;
+    email: string;
   };
   message: string;
   message_type: string;

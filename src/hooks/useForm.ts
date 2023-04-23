@@ -85,7 +85,7 @@ export const useForm = <T extends IFormState>(
     const formStateNames = Object.keys(formState);
 
     formStateNames.forEach((name) => {
-      {/* TODO: Ver como manejar eso del equalTo, esta raro asi dom 09 abr 2023 12:54:52  */}
+      {/* TODO: Ver como manejar eso del equalTo, esta raro asi dom 09 abr 2023 12:54:52  */ }
       const optional = validations && formState[validations![name]?.equalTo!];
       const value = formState[name];
       setFormErrors(

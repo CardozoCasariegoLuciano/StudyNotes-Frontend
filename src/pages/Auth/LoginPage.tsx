@@ -4,13 +4,13 @@ import SimpleCheckBox from "../../components/FormsElements/CheckBox/SimpleCheckB
 import SimpleInput from "../../components/FormsElements/Input/SimpleInput";
 import Logo from "../../components/Logo/Logo";
 import { SimpleButton } from "../../components/StyledComponents/Button/SimpleButton";
+import useAuth from "../../hooks/useAuth";
 import { useForm } from "../../hooks/useForm";
-import useLogin from "../../hooks/useLogin";
 import { useShowAlert } from "../../hooks/useShowAlert";
 
 const LoginPage = () => {
   const { showAlert, showModal } = useShowAlert();
-  const { login } = useLogin();
+  const { login } = useAuth();
   const navigate = useNavigate();
   const form = useForm(
     {
