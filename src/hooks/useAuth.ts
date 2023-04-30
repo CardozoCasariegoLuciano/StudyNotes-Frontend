@@ -27,6 +27,7 @@ const useAuth = (): AuthReuslt => {
 
       apiError = null;
     } catch (err) {
+      {/* TODO: Manejar el caso Error de conexion con el servidor: err.code = "ERR_NETWORK" mar 25 abr 2023 00:37:48  */}
       const axiosError = err as AxiosError;
       apiError = axiosError.response?.data as APIError;
     }
