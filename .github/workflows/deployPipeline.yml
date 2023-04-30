@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 16
       - name: Install dependencies
-        run: npm install --no-audit --no-fund --no-optional
+        run: npm ci
       - name: Build
         run: npm run build
       - name: Test
