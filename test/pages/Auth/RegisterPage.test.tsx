@@ -27,7 +27,7 @@ describe("RegisterPage test cases", () => {
 
     render(<RegisterPage />, { route: "/auth/register" });
 
-    const singInButton = screen.getByText(/sing in/i);
+    const registerButton = screen.getByText(/sing up/i);
     const nameInput = screen.getByPlaceholderText(/name/i);
     const emailInput = screen.getByPlaceholderText(/email/i);
     const passInput = screen.getByPlaceholderText(/password/i);
@@ -38,7 +38,7 @@ describe("RegisterPage test cases", () => {
     fireEvent.change(passInput, { target: { value: "123123" } });
     fireEvent.change(confirmPassInput, { target: { value: "123123" } });
 
-    fireEvent.click(singInButton);
+    fireEvent.click(registerButton);
 
     await waitFor(() => expect(axiosPostSpy).toHaveBeenCalledTimes(1));
     expect(window.location.pathname).toBe("/home");
@@ -48,10 +48,10 @@ describe("RegisterPage test cases", () => {
     const axiosPostSpy = jest.spyOn(axios, "post").mockResolvedValueOnce(null);
     render(<RegisterPage />, { route: "/auth/register" });
 
-    const singInButton = screen.getByText(/sing in/i);
+    const registerButton = screen.getByText(/sing up/i);
     //Empty content on form inputs
 
-    fireEvent.click(singInButton);
+    fireEvent.click(registerButton);
     expect(axiosPostSpy).toHaveBeenCalledTimes(0);
     expect(window.location.pathname).toBe("/auth/register");
   });
@@ -69,7 +69,7 @@ describe("RegisterPage test cases", () => {
 
     render(<RegisterPage />, { route: "auth/register" });
 
-    const registerButton = screen.getByText(/sing in/i);
+    const registerButton = screen.getByText(/sing up/i);
     const nameInput = screen.getByPlaceholderText(/name/i);
     const emailInput = screen.getByPlaceholderText(/email/i);
     const passInput = screen.getByPlaceholderText(/password/i);

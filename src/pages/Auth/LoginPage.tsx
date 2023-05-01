@@ -67,7 +67,7 @@ const LoginPage = () => {
             </div>
             <div className="auth-login__actions">
               <div className="auth-login__actions--buttons">
-                <SimpleButton disabled={form.hasErrors()}>Login</SimpleButton>
+                <SimpleButton disabled={form.hasErrors()}>Sing in</SimpleButton>
                 <SimpleCheckBox label="Remember me" />
               </div>
               <div className="auth-login__actions--links">
