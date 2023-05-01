@@ -12,4 +12,5 @@ export const SimpleButton = styled.button`
   border-radius: 8px;
   padding: 5px 30px;
   font: var(--text_medium_small);
+  cursor: pointer;
 `;

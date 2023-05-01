@@ -93,7 +93,7 @@ const RegisterPage = () => {
             {showAlert()}
           </div>
           <div className="auth-register__actions">
-            <SimpleButton disabled={form.hasErrors()}>Sing In</SimpleButton>
+            <SimpleButton disabled={form.hasErrors()}>Sing up</SimpleButton>
             <Link to="/auth/login">Have an account yet?</Link>
           </div>
         </form>
