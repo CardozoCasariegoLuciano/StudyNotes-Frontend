@@ -2,6 +2,7 @@ name: Deploy pipeline
 
 on:
   push:
+    branches: [master, develop]
   pull_request:
     types: [opened, synchronize]
 
@@ -9,7 +10,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.event_number == 1
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
