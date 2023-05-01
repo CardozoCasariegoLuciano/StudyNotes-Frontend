@@ -27,7 +27,7 @@ describe("LoginPage test cases", () => {
     const axiosPostSpy = jest.spyOn(axios, "post").mockResolvedValueOnce(null);
     render(<LoginPage />, { route: "/auth/login" });
 
-    const loginButton = screen.getByText(/login/i);
+    const loginButton = screen.getByText(/sing in/i);
     //Empty content on form inputs
 
     fireEvent.click(loginButton);
@@ -39,7 +39,7 @@ describe("LoginPage test cases", () => {
     const axiosPostSpy = jest.spyOn(axios, "post").mockResolvedValueOnce(null);
     render(<LoginPage />, { route: "auth/login" });
 
-    const loginButton = screen.getByText(/login/i);
+    const loginButton = screen.getByText(/sing in/i);
     const emailInput = screen.getByPlaceholderText(/email/i);
     const passInput = screen.getByPlaceholderText(/password/i);
 
@@ -65,7 +65,7 @@ describe("LoginPage test cases", () => {
 
     render(<LoginPage />, { route: "auth/login" });
 
-    const loginButton = screen.getByText(/login/i);
+    const loginButton = screen.getByText(/sing in/i);
     const emailInput = screen.getByPlaceholderText(/email/i);
     const passInput = screen.getByPlaceholderText(/password/i);
 
