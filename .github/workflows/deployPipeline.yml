@@ -26,3 +26,7 @@ jobs:
         run: npm run build
       - name: Test
         run: npm run test
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
