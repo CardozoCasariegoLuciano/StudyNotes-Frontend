@@ -2,6 +2,7 @@ name: Deploy pipeline
 
 on:
   push:
+    branches: [master, develop]
   pull_request:
     types: [opened, synchronize]
 
@@ -9,6 +10,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v3
         with:
