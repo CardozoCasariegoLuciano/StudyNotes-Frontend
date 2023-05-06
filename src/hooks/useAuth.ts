@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import { manageAPIErrors } from "../helpers/apiErrors";
 import { UrlBank } from "../helpers/URLs";
 import {
   APISuccessLogin,
@@ -14,22 +15,20 @@ const useAuth = (): AuthReuslt => {
 
   const login = async (loginData: LoginFormData): Promise<APIError | null> => {
     try {
-      const resp = await axios.post(UrlBank.auth.login, loginData);
-      const data = resp.data as APISuccessLogin;
+      const axiosResp = await axios.post(UrlBank.auth.login, loginData);
+      const res = axiosResp.data as APISuccessLogin;
 
       const user = {
-        name: data.data.userName,
-        email: data.data.email,
+        name: res.data.userName,
+        email: res.data.email,
       };
 
-      localStorage.setItem("token", JSON.stringify(data.data.token));
+      localStorage.setItem("token", JSON.stringify(res.data.token));
       localStorage.setItem("user", JSON.stringify(user));
 
       apiError = null;
     } catch (err) {
-      {/* TODO: Manejar el caso Error de conexion con el servidor: err.code = "ERR_NETWORK" mar 25 abr 2023 00:37:48  */}
-      const axiosError = err as AxiosError;
-      apiError = axiosError.response?.data as APIError;
+      apiError = manageAPIErrors(err as AxiosError);
     }
     return apiError;
   };
@@ -56,8 +55,7 @@ const useAuth = (): AuthReuslt => {
 
       apiError = null;
     } catch (err) {
-      const axiosError = err as AxiosError;
-      apiError = axiosError.response?.data as APIError;
+      apiError = manageAPIErrors(err as AxiosError);
     }
     return apiError;
   };
