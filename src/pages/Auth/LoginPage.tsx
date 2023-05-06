@@ -40,7 +40,7 @@ const LoginPage = () => {
       <div className="auth">
         <div className="auth__container">
           <Logo margin="20px 0px 50px 0px" />
-          <form className="login_form" onSubmit={submit}>
+          <form className="auth__form" onSubmit={submit}>
             <div className="auth_inputs">
               <SimpleInput
                 type="text"
@@ -63,17 +63,16 @@ const LoginPage = () => {
                 errorMessage={form.formErrors.password}
                 onCleanInput={form.onCleanInput}
               />
-              <div className="auth_alertContainer">{showAlert()}</div>
-            </div>
-            <div className="auth-login__actions">
-              <div className="auth-login__actions--buttons">
-                <SimpleButton disabled={form.hasErrors()}>Sing in</SimpleButton>
+
+              <div className="auth__remember">
+                <Link to="">Forgotten password</Link>
                 <SimpleCheckBox label="Remember me" />
               </div>
-              <div className="auth-login__actions--links">
-                <Link to="/auth/register">Don't have an account yet?</Link>
-                <Link to="/auth/register">Have you forgot your password?</Link>
-              </div>
+              <div className="auth_alertContainer">{showAlert()}</div>
+            </div>
+            <div className="auth__actions">
+              <SimpleButton disabled={form.hasErrors()}>Sing in</SimpleButton>
+              <Link to="/auth/register">Don't have an account yet?</Link>
             </div>
           </form>
         </div>
