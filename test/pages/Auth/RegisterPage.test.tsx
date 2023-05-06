@@ -17,7 +17,7 @@ describe("RegisterPage test cases", () => {
   test("Must redirect to /auth/login when click on 'Have an acount' link", () => {
     render(<RegisterPage />, { route: "auth/register" });
 
-    const haveAccountLink = screen.getByText(/have an account yet/i);
+    const haveAccountLink = screen.getByText(/Already have an account/i);
     fireEvent.click(haveAccountLink);
     expect(window.location.pathname).toBe("/auth/login");
   });

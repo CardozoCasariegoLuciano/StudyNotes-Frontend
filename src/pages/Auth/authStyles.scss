@@ -10,75 +10,42 @@
 }
 
 .auth {
-  .register_form,
-  .login_form {
+
+  a {
+    color: var(--grey_800);
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    button {
+      width: 250px;
+      font-weight: 600;
+    }
+  }
+
+  &__form {
     width: 100%;
     max-width: 330px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: calc(100vh - 175px);
   }
 
-  .register_form {
-    height: calc(100vh - 200px);
-  }
-
-  .login_form {
-    height: 100vh;
-    max-height: 475px;
-    position: relative;
-
-    &__alertContainer {
-      position: absolute;
-      width: 100%;
-      max-width: 400px;
-    }
-  }
-
-  &-register__actions {
+  &__remember {
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-
-    a {
-      color: var(--grey_700);
-      text-decoration: none;
-      text-align: center;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-  &-login__actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 60px;
-    height: 100vh;
-
-    a {
-      color: var(--grey_700);
-      text-decoration: none;
-      text-align: center;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-    &--buttons {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    &--links {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
   }
 }
 
@@ -87,14 +54,14 @@
     background-image: url(../../assets/images/default.png);
     background-size: cover;
     background-repeat: no-repeat;
+
+    &__form {
+      height: 500px;
+    }
   }
 
   .auth__container {
     margin-right: 0px;
-
-    .register_form {
-      max-height: 500px;
-    }
   }
 }
 

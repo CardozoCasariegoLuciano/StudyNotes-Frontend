@@ -45,7 +45,7 @@ const RegisterPage = () => {
     <div className="auth">
       <div className="auth__container">
         <Logo margin="20px 0px 50px 0px" />
-        <form className="register_form" onSubmit={submit}>
+        <form className="auth__form" onSubmit={submit}>
           <div className="auth_inputs">
             <SimpleInput
               type="text"
@@ -92,9 +92,9 @@ const RegisterPage = () => {
             />
             {showAlert()}
           </div>
-          <div className="auth-register__actions">
+          <div className="auth__actions">
             <SimpleButton disabled={form.hasErrors()}>Sing up</SimpleButton>
-            <Link to="/auth/login">Have an account yet?</Link>
+            <Link to="/auth/login">Already have an account</Link>
           </div>
         </form>
       </div>
