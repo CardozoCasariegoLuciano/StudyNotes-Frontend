@@ -44,10 +44,10 @@ const useAuth = (): AuthReuslt => {
         confirmPassword: formData.confirmation,
       };
 
-      const resp = await axios.post(UrlBank.auth.register, registerData);
-      const data = resp.data as APISuccessRegister;
+      const axiosResponse = await axios.post(UrlBank.auth.register, registerData);
+      const resp = axiosResponse?.data as APISuccessRegister;
 
-      localStorage.setItem("token", JSON.stringify(data.data.token));
+      localStorage.setItem("token", JSON.stringify(resp.data.token));
       localStorage.setItem(
         "user",
         JSON.stringify({ name: formData.name, email: formData.email })

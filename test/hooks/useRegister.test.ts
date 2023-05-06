@@ -74,6 +74,7 @@ describe("useRegister Test cases", () => {
       message_type: "Algo malio sal",
     };
     const axiosError: AxiosError = {
+      code: "ERR_BAD_REQUEST",
       response: { data: error },
     } as AxiosError;
 

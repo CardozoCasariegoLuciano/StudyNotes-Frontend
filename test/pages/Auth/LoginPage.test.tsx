@@ -36,7 +36,15 @@ describe("LoginPage test cases", () => {
   });
 
   test("Must redirect to /home when the form data is OK", async () => {
-    const axiosPostSpy = jest.spyOn(axios, "post").mockResolvedValueOnce(null);
+    const axiosPostSpy = jest.spyOn(axios, "post").mockResolvedValueOnce({
+      data: {
+        data: {
+          userName: "test",
+          token: "test",
+          email: "test",
+        },
+      },
+    });
     render(<LoginPage />, { route: "auth/login" });
 
     const loginButton = screen.getByText(/sing in/i);
@@ -54,6 +62,7 @@ describe("LoginPage test cases", () => {
 
   test("Must show a message when the login fail", async () => {
     const axiosPostSpy = jest.spyOn(axios, "post").mockRejectedValueOnce({
+      code: "ERR_BAD_REQUEST",
       response: {
         data: {
           data: {},

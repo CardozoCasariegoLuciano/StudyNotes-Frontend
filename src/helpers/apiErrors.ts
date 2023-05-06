@@ -3,7 +3,6 @@ import { APIError } from "../interfaces/API_response.interface";
 
 export const manageAPIErrors = (axiosError: AxiosError): APIError => {
   let result: APIError;
-
   switch (axiosError.code) {
     case "ERR_NETWORK":
       result = {
@@ -19,7 +18,7 @@ export const manageAPIErrors = (axiosError: AxiosError): APIError => {
       break;
 
     default:
-      console.log("Error: ", axiosError);
+      console.log("Error: ",axiosError);
       result = {
         data: null,
         message_type: "ERROR",
