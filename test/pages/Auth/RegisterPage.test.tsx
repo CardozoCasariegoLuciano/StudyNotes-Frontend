@@ -23,7 +23,9 @@ describe("RegisterPage test cases", () => {
   });
 
   test("Must redirect to /home when the form data is OK", async () => {
-    const axiosPostSpy = jest.spyOn(axios, "post").mockResolvedValueOnce(null);
+    const axiosPostSpy = jest
+      .spyOn(axios, "post")
+      .mockResolvedValueOnce({ data: { data: { token: "anyToken" } } });
 
     render(<RegisterPage />, { route: "/auth/register" });
 
@@ -58,6 +60,7 @@ describe("RegisterPage test cases", () => {
 
   test("Must show a message when the register fail", async () => {
     const axiosPostSpy = jest.spyOn(axios, "post").mockRejectedValueOnce({
+      code: "ERR_BAD_REQUEST",
       response: {
         data: {
           data: {},
