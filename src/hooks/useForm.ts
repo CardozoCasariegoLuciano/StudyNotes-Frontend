@@ -51,6 +51,14 @@ export const useForm = <T extends IFormState>(
     }
   };
 
+  const onCheckBoxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = event.target;
+    setFormState({
+      ...formState,
+      [name]: checked,
+    });
+  };
+
   const onBlur = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -75,9 +83,10 @@ export const useForm = <T extends IFormState>(
 
     formErrorsNames.forEach((name) => {
       const value = Object.keys(formErrors[name]);
-      if (value.length > 0) result = true;
+      if (value.length > 0) {
+        result = true;
+      }
     });
-
     return result;
   };
 
@@ -85,7 +94,9 @@ export const useForm = <T extends IFormState>(
     const formStateNames = Object.keys(formState);
 
     formStateNames.forEach((name) => {
-      {/* TODO: Ver como manejar eso del equalTo, esta raro asi dom 09 abr 2023 12:54:52  */ }
+      {
+        /* TODO: Ver como manejar eso del equalTo, esta raro asi dom 09 abr 2023 12:54:52  */
+      }
       const optional = validations && formState[validations![name]?.equalTo!];
       const value = formState[name];
       setFormErrors(
@@ -126,5 +137,6 @@ export const useForm = <T extends IFormState>(
     onBlur,
     onResetForm,
     onCleanInput,
+    onCheckBoxChange,
   };
 };

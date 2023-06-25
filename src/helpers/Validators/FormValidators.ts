@@ -1,17 +1,22 @@
 import { IFormValidateData } from "../../interfaces/Forms.interface";
-import { IFormValidations, IFormValidationsErrors } from "../../interfaces/Validator.interface";
+import {
+  IFormValidations,
+  IFormValidationsErrors,
+} from "../../interfaces/Validator.interface";
 
 export const FormValidator = (
   actual: IFormValidationsErrors,
   name: string,
-  value: string | number,
+  value: string | number | boolean,
   validations?: IFormValidateData,
-  optional?: string | number,
+  optional?: string | number | boolean,
   customMessagges?: IFormValidationsErrors
 ): IFormValidationsErrors => {
   if (!validations) return {};
   const rules: IFormValidations = validations[name];
-  if (!rules) return {};
+  if (!rules) {
+    return actual;
+  }
 
   const rulesByInput: string[] = Object.keys(rules);
 

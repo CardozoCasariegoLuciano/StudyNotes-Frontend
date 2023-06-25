@@ -16,6 +16,7 @@ const LoginPage = () => {
     {
       email: "",
       password: "",
+      remember: false,
     },
     {
       email: { required: true, email: true },
@@ -66,7 +67,11 @@ const LoginPage = () => {
 
               <div className="auth__remember">
                 <Link to="">Forgotten password</Link>
-                <SimpleCheckBox label="Remember me" />
+                <SimpleCheckBox
+                  label="Remember me"
+                  name="remember"
+                  onChange={form.onCheckBoxChange}
+                />
               </div>
               <div className="auth_alertContainer">{showAlert()}</div>
             </div>

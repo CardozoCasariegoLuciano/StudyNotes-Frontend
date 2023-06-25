@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { manageAPIErrors } from "../helpers/apiErrors";
 import { UrlBank } from "../helpers/URLs";
+import { getStorage, setStorage } from "../helpers/webStorage";
 import {
   APISuccessLogin,
   APISuccessRegister,
@@ -14,8 +15,13 @@ const useAuth = (): AuthReuslt => {
   let apiError: APIError | null = null;
 
   const login = async (loginData: LoginFormData): Promise<APIError | null> => {
+    const reqBody = {
+      email: loginData.email,
+      password: loginData.password,
+    };
+
     try {
-      const axiosResp = await axios.post(UrlBank.auth.login, loginData);
+      const axiosResp = await axios.post(UrlBank.auth.login, reqBody);
       const res = axiosResp.data as APISuccessLogin;
 
       const user = {
@@ -23,8 +29,8 @@ const useAuth = (): AuthReuslt => {
         email: res.data.email,
       };
 
-      localStorage.setItem("token", JSON.stringify(res.data.token));
-      localStorage.setItem("user", JSON.stringify(user));
+      setStorage("token", JSON.stringify(res.data.token), loginData.remember);
+      setStorage("user", JSON.stringify(user), loginData.remember);
 
       apiError = null;
     } catch (err) {
@@ -44,7 +50,10 @@ const useAuth = (): AuthReuslt => {
         confirmPassword: formData.confirmation,
       };
 
-      const axiosResponse = await axios.post(UrlBank.auth.register, registerData);
+      const axiosResponse = await axios.post(
+        UrlBank.auth.register,
+        registerData
+      );
       const resp = axiosResponse?.data as APISuccessRegister;
 
       localStorage.setItem("token", JSON.stringify(resp.data.token));
