@@ -90,8 +90,8 @@ export const FormValidator = (
 };
 
 const isEqualTo = (
-  value: string | number,
-  toCompare?: string | number
+  value: string | number | boolean,
+  toCompare?: string | number | boolean
 ): boolean => {
   if (!toCompare) return true;
   if (toCompare != value) return false;
