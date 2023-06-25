@@ -10,6 +10,7 @@ export type RegisterFormData = {
 export type LoginFormData = {
   email: string;
   password: string;
+  remember: boolean;
 };
 
 export type AuthReuslt = {

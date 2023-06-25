@@ -1,17 +1,22 @@
 import { IFormValidateData } from "../../interfaces/Forms.interface";
-import { IFormValidations, IFormValidationsErrors } from "../../interfaces/Validator.interface";
+import {
+  IFormValidations,
+  IFormValidationsErrors,
+} from "../../interfaces/Validator.interface";
 
 export const FormValidator = (
   actual: IFormValidationsErrors,
   name: string,
-  value: string | number,
+  value: string | number | boolean,
   validations?: IFormValidateData,
-  optional?: string | number,
+  optional?: string | number | boolean,
   customMessagges?: IFormValidationsErrors
 ): IFormValidationsErrors => {
   if (!validations) return {};
   const rules: IFormValidations = validations[name];
-  if (!rules) return {};
+  if (!rules) {
+    return actual;
+  }
 
   const rulesByInput: string[] = Object.keys(rules);
 
@@ -85,8 +90,8 @@ export const FormValidator = (
 };
 
 const isEqualTo = (
-  value: string | number,
-  toCompare?: string | number
+  value: string | number | boolean,
+  toCompare?: string | number | boolean
 ): boolean => {
   if (!toCompare) return true;
   if (toCompare != value) return false;
