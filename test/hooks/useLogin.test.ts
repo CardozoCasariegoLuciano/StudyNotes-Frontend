@@ -1,5 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import axios, { AxiosError } from "axios";
+import { MemoryRouter } from "react-router-dom";
 import useAuth from "../../src/hooks/useAuth";
 import { LoginFormData } from "../../src/interfaces/API_auth.interface";
 import { APIError } from "../../src/interfaces/API_response.interface";
@@ -25,12 +26,13 @@ describe("useLogin Test cases", () => {
   });
 
   test("should return null if login was OK", async () => {
-    const { result } = renderHook(() => useAuth());
+    const { result } = renderHook(() => useAuth(), { wrapper: MemoryRouter });
     (axios.post as jest.Mock).mockResolvedValueOnce(goodResponse);
 
     const loginData: LoginFormData = {
       email: "a@a.com",
       password: "123123",
+      remember: true,
     };
 
     const loginResult = await result.current.login(loginData);
@@ -38,7 +40,7 @@ describe("useLogin Test cases", () => {
   });
 
   test("Should save on storage the token", async () => {
-    const { result } = renderHook(() => useAuth());
+    const { result } = renderHook(() => useAuth(), { wrapper: MemoryRouter });
     (axios.post as jest.Mock).mockResolvedValueOnce(goodResponse);
     const localStorageSpy = jest.spyOn(
       window.localStorage.__proto__,
@@ -69,7 +71,7 @@ describe("useLogin Test cases", () => {
       response: { data: error },
     } as AxiosError;
 
-    const { result } = renderHook(() => useAuth());
+    const { result } = renderHook(() => useAuth(), { wrapper: MemoryRouter });
     (axios.post as jest.Mock).mockRejectedValueOnce(axiosError);
 
     const loginResult = await result.current.login({} as LoginFormData);

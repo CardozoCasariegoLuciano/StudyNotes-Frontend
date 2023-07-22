@@ -7,6 +7,7 @@ import { SimpleButton } from "../../components/StyledComponents/Button/SimpleBut
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "../../hooks/useForm";
 import { useShowAlert } from "../../hooks/useShowAlert";
+import "./authStyles.scss";
 
 const LoginPage = () => {
   const { showAlert, showModal } = useShowAlert();

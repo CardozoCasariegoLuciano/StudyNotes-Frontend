@@ -16,6 +16,7 @@ export type LoginFormData = {
 export type AuthReuslt = {
   login: (formData: LoginFormData) => Promise<APIError | null>;
   register: (formData: RegisterFormData) => Promise<APIError | null>;
+  logOut: () => void;
 };
 
 export interface APISuccessRegister {

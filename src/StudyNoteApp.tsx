@@ -1,9 +1,12 @@
+import { UserProvider } from "./contexts/userContext";
 import AppRouter from "./router/AppRouter";
 
 const StudyNoteApp = () => {
   return (
     <>
-      <AppRouter />
+      <UserProvider>
+        <AppRouter />
+      </UserProvider>
     </>
   );
 };

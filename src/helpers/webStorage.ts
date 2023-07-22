@@ -18,3 +18,8 @@ export const getStorage = (key: string) => {
   }
   return ret;
 };
+
+export const removeStorage = (key: string) => {
+  localStorage.removeItem(key);
+  sessionStorage.removeItem(key);
+};

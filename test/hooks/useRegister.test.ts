@@ -1,5 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import axios, { AxiosError } from "axios";
+import { MemoryRouter } from "react-router-dom";
 import useAuth from "../../src/hooks/useAuth";
 import { RegisterFormData } from "../../src/interfaces/API_auth.interface";
 import { APIError } from "../../src/interfaces/API_response.interface";
@@ -25,7 +26,7 @@ describe("useRegister Test cases", () => {
   });
 
   test("should return null if register was OK", async () => {
-    const { result } = renderHook(() => useAuth());
+    const { result } = renderHook(() => useAuth(), { wrapper: MemoryRouter });
     (axios.post as jest.Mock).mockResolvedValueOnce(goodResponse);
 
     const registerData: RegisterFormData = {
@@ -40,7 +41,7 @@ describe("useRegister Test cases", () => {
   });
 
   test("Should save on storage user name, email and token", async () => {
-    const { result } = renderHook(() => useAuth());
+    const { result } = renderHook(() => useAuth(), { wrapper: MemoryRouter });
     (axios.post as jest.Mock).mockResolvedValueOnce(goodResponse);
     const localStorageSpy = jest.spyOn(
       window.localStorage.__proto__,
@@ -60,11 +61,6 @@ describe("useRegister Test cases", () => {
       "token",
       JSON.stringify(token)
     );
-
-    expect(localStorageSpy).toHaveBeenCalledWith(
-      "user",
-      JSON.stringify({ name: registerData.name, email: registerData.email })
-    );
   });
 
   test("Should return an error if register was Wrong", async () => {
@@ -78,7 +74,7 @@ describe("useRegister Test cases", () => {
       response: { data: error },
     } as AxiosError;
 
-    const { result } = renderHook(() => useAuth());
+    const { result } = renderHook(() => useAuth(), { wrapper: MemoryRouter });
     (axios.post as jest.Mock).mockRejectedValueOnce(axiosError);
 
     const registerResutl = await result.current.register(

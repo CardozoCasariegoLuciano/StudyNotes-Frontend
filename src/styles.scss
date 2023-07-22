@@ -1,8 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap");
+@import "./variables";
 
 * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
   font-family: "Nunito", Arial, sans-serif;
+}
+
+.mainPage {
+  width: 100%;
+  padding: 10px 20px;
+}
+
+@media (min-width: 850px) {
+  .mainPage {
+    max-width: 850px;
+    margin: auto;
+  }
 }
