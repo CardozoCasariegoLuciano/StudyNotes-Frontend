@@ -1,0 +1,15 @@
+.MenuItem{
+  cursor: pointer;
+  padding: 10px 0px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  p{
+    font-size: 1.2rem;
+  }
+}
+
+.separator{
+  border-bottom:1px solid lightgrey ;
+}

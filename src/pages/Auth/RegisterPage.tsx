@@ -1,6 +1,5 @@
 import Logo from "../../components/Logo/Logo";
 import "./authStyles.scss";
-import "../../styles.scss";
 import { SimpleButton } from "../../components/StyledComponents/Button/SimpleButton";
 import { useForm } from "../../hooks/useForm";
 import { Link, useNavigate } from "react-router-dom";
