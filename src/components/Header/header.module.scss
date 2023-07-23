@@ -24,7 +24,7 @@
 .header__dropdown {
   position: relative;
 
-  &--menu {
+  &_Menu {
     position: absolute;
     z-index: 5;
     top: 5px;
@@ -47,11 +47,11 @@
   &__content {
     padding: 0px 15px;
   }
+}
 
-  &--adminSize {
-    width: 180px;
-    height: 200px;
-  }
+.adminSize {
+  width: 180px;
+  height: 200px;
 }
 
 @media (min-width: 850px) {

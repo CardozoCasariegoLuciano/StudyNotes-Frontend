@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 import { CheckBox } from "../../StyledComponents/CheckBox/CheckBox";
-import "./SimpleCheckBox.scss";
+import styles from "./SimpleCheckBox.module.scss";
 
 type SimpleCheckBoxPropType = {
   label?: string;
@@ -16,7 +16,7 @@ const showLabel = (text: string) => {
 
 const SimpleCheckBox = (props: SimpleCheckBoxPropType) => {
   return (
-    <div className="SimpleCheckBox">
+    <div className={ styles.SimpleCheckBox }>
       {!props.labelLeft && showLabel(props.label!)}
       <CheckBox
         id="SimpleCheckBox_id"

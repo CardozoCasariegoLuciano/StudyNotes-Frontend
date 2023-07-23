@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import DropdownMenu from "./DropdownMenu";
-import "./header.scss";
+import styles from "./header.module.scss";
 import { UserSection } from "./UserSection";
 
 type HeaderPropType = {};
@@ -12,9 +12,9 @@ const Header = ({}: HeaderPropType) => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className="header">
-      <div className="header_bar">
-        <div className="header_bar__content">
+    <div className={styles.header}>
+      <div className={styles.header_bar}>
+        <div className={styles.header_bar__content}>
           <Logo
             inLine={true}
             size={3}

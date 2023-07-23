@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Roles } from "../../helpers/roles.enum";
 import useAuth from "../../hooks/useAuth";
 import useUser from "../../hooks/useUser";
-import "./header.scss";
+import styles from "./header.module.scss";
 import MenuItem from "./MenuItem";
 
 type DropdownMenuPropType = {
@@ -16,19 +16,20 @@ const DropdownMenu = (props: DropdownMenuPropType) => {
   const auth = useAuth();
 
   return (
-    <div className="header__dropdown">
+    <div className={styles.header__dropdown}>
       <div
-        className={
-          "header__dropdown--menu" + (props.showMenu ? "" : " hideMenu")
-        }
+        className={`${styles.header__dropdown_Menu} ${
+          props.showMenu ? "" : styles.hideMenu
+        } `}
       >
         <div
-          className={
-            "headerMenu " +
-            (user?.role == Roles.ADMIN ? " headerMenu--adminSize" : "")
-          }
+          className={`
+            ${styles.headerMenu}
+            ${user?.role == Roles.ADMIN ? styles.adminSize : ""}
+
+            `}
         >
-          <div className="headerMenu__content">
+          <div className={styles.headerMenu__content}>
             <MenuItem
               text="cerrar"
               svg="Xfill"
