@@ -1,5 +1,5 @@
 import Svg from "../SVGs/Svg";
-import "./menuItem.scss";
+import styles from "./menuItem.module.scss";
 
 type MenuItemPropType = {
   svg: string;
@@ -12,7 +12,9 @@ type MenuItemPropType = {
 const MenuItem = (props: MenuItemPropType) => {
   return (
     <div
-      className={"MenuItem " + (props.separator && "separator")}
+      className={`${styles.MenuItem} ${
+        props.separator ? styles.separator : ""
+      }`}
       onClick={props.action}
     >
       <Svg svgName={props.svg} svgColor={props.svgColor} />

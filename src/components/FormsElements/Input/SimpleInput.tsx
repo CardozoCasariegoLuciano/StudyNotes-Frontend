@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { InputContainer } from "../../StyledComponents/Containers/InputContainer";
 import { Input } from "../../StyledComponents/Input/Input";
 import Svg from "../../SVGs/Svg";
-import "./simpleInput.scss";
+import styles from "./simpleInput.module.scss";
 
 type SimpleInputPropType = {
   placeHolder?: string;
@@ -44,12 +44,12 @@ const SimpleInput = (props: SimpleInputPropType) => {
   };
 
   return (
-    <div className="SimpleInput" style={props.styles}>
-      <label className="SimpleInput__label" htmlFor={inputID}>
+    <div className={styles.SimpleInput} style={props.styles}>
+      <label className={styles.SimpleInput__label} htmlFor={inputID}>
         {labelName}
       </label>
       <InputContainer error={!!errorMessagge} spaceBetween={true}>
-        <div className="SimpleInput__input">
+        <div className={styles.SimpleInput__input}>
           <Svg svgName={props.icon} />
           <Input
             type={inputType}
@@ -62,23 +62,28 @@ const SimpleInput = (props: SimpleInputPropType) => {
             onBlur={props.onBlur}
           />
         </div>
-        <div className="SimpleInput__actions">
+        <div className={styles.SimpleInput__actions}>
           {props.value && props.type === "password" && (
-            <div onClick={() => toggleInputType()} className="SimpleInput__SVG">
+            <div
+              onClick={() => toggleInputType()}
+              className={styles.SimpleInput__SVG}
+            >
               <Svg svgName={svgEye} />
             </div>
           )}
           {props.value && (
             <div
               onClick={() => props.onCleanInput(props.name)}
-              className="SimpleInput__SVG"
+              className={styles.SimpleInput__SVG}
             >
               <Svg svgName="X" />
             </div>
           )}
         </div>
       </InputContainer>
-      {errorMessagge && <p className="SimpleInput__error">{errorMessagge}</p>}
+      {errorMessagge && (
+        <p className={styles.SimpleInput__error}>{errorMessagge}</p>
+      )}
     </div>
   );
 };

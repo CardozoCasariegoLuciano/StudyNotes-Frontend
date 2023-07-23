@@ -7,7 +7,7 @@ import { SimpleButton } from "../../components/StyledComponents/Button/SimpleBut
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "../../hooks/useForm";
 import { useShowAlert } from "../../hooks/useShowAlert";
-import "./authStyles.scss";
+import styles from "./authStyles.module.scss";
 
 const LoginPage = () => {
   const { showAlert, showModal } = useShowAlert();
@@ -39,11 +39,11 @@ const LoginPage = () => {
   };
   return (
     <>
-      <div className="auth">
-        <div className="auth__container">
+      <div className={styles.auth}>
+        <div className={styles.auth__container}>
           <Logo margin="20px 0px 50px 0px" />
-          <form className="auth__form" onSubmit={submit}>
-            <div className="auth_inputs">
+          <form className={styles.auth__form} onSubmit={submit}>
+            <div className={styles.auth_inputs}>
               <SimpleInput
                 type="text"
                 name="email"
@@ -66,7 +66,7 @@ const LoginPage = () => {
                 onCleanInput={form.onCleanInput}
               />
 
-              <div className="auth__remember">
+              <div className={styles.auth__remember}>
                 <Link to="">Forgotten password</Link>
                 <SimpleCheckBox
                   label="Remember me"
@@ -74,9 +74,9 @@ const LoginPage = () => {
                   onChange={form.onCheckBoxChange}
                 />
               </div>
-              <div className="auth_alertContainer">{showAlert()}</div>
+              <div className={styles.auth_alertContainer}>{showAlert()}</div>
             </div>
-            <div className="auth__actions">
+            <div className={styles.auth__actions}>
               <SimpleButton disabled={form.hasErrors()}>Sing in</SimpleButton>
               <Link to="/auth/register">Don't have an account yet?</Link>
             </div>
