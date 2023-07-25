@@ -1,12 +1,12 @@
 import Logo from "../../components/Logo/Logo";
 import { SimpleButton } from "../../components/StyledComponents/Button/SimpleButton";
-import { useForm } from "../../hooks/useForm";
 import { Link, useNavigate } from "react-router-dom";
 import { ChangeEvent } from "react";
 import { useShowAlert } from "../../hooks/useShowAlert";
 import SimpleInput from "../../components/FormsElements/Input/SimpleInput";
 import useAuth from "../../hooks/useAuth";
 import styles from "./authStyles.module.scss";
+import { useForm } from "lccform";
 
 const RegisterPage = () => {
   const { showAlert, showModal } = useShowAlert();

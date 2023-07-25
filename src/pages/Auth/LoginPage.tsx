@@ -1,3 +1,4 @@
+import { useForm } from "lccform";
 import { ChangeEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SimpleCheckBox from "../../components/FormsElements/CheckBox/SimpleCheckBox";
@@ -5,7 +6,6 @@ import SimpleInput from "../../components/FormsElements/Input/SimpleInput";
 import Logo from "../../components/Logo/Logo";
 import { SimpleButton } from "../../components/StyledComponents/Button/SimpleButton";
 import useAuth from "../../hooks/useAuth";
-import { useForm } from "../../hooks/useForm";
 import { useShowAlert } from "../../hooks/useShowAlert";
 import styles from "./authStyles.module.scss";
 
