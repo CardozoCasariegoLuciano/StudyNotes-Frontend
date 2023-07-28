@@ -1,37 +1,37 @@
-import { renderHook } from "@testing-library/react";
-import axios, { AxiosError } from "axios";
-import { MemoryRouter } from "react-router-dom";
-import useAuth from "../../src/hooks/useAuth";
-import { LoginFormData } from "../../src/interfaces/API_auth.interface";
-import { APIError } from "../../src/interfaces/API_response.interface";
+import { renderHook } from '@testing-library/react';
+import axios, { AxiosError } from 'axios';
+import { MemoryRouter } from 'react-router-dom';
+import useAuth from '../../src/hooks/useAuth';
+import { LoginFormData } from '../../src/interfaces/API_auth.interface';
+import { APIError } from '../../src/interfaces/API_response.interface';
 
-jest.mock("axios", () => ({
+jest.mock('axios', () => ({
   post: jest.fn(),
 }));
 
-const token = "token";
+const token = 'token';
 const goodResponse = {
   data: {
     data: {
       token: token,
     },
-    message: "string",
-    message_type: "string",
+    message: 'string',
+    message_type: 'string',
   },
 };
 
-describe("useLogin Test cases", () => {
+describe('useLogin Test cases', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test("should return null if login was OK", async () => {
+  test('should return null if login was OK', async () => {
     const { result } = renderHook(() => useAuth(), { wrapper: MemoryRouter });
     (axios.post as jest.Mock).mockResolvedValueOnce(goodResponse);
 
     const loginData: LoginFormData = {
-      email: "a@a.com",
-      password: "123123",
+      email: 'a@a.com',
+      password: '123123',
       remember: true,
     };
 
@@ -39,36 +39,36 @@ describe("useLogin Test cases", () => {
     expect(loginResult).toBeNull();
   });
 
-  test("Should save on storage the token", async () => {
+  test('Should save on storage the token', async () => {
     const { result } = renderHook(() => useAuth(), { wrapper: MemoryRouter });
     (axios.post as jest.Mock).mockResolvedValueOnce(goodResponse);
     const localStorageSpy = jest.spyOn(
       window.localStorage.__proto__,
-      "setItem"
+      'setItem',
     );
 
     const loginData: LoginFormData = {
-      email: "a@a.com",
-      password: "123123",
+      email: 'a@a.com',
+      password: '123123',
       remember: true,
     };
 
     await result.current.login(loginData);
 
     expect(localStorageSpy).toHaveBeenCalledWith(
-      "token",
-      JSON.stringify(token)
+      'token',
+      JSON.stringify(token),
     );
   });
 
-  test("Should return an error if login was Wrong", async () => {
+  test('Should return an error if login was Wrong', async () => {
     const error: APIError = {
-      message: "Error",
+      message: 'Error',
       data: null,
-      message_type: "Algo malio sal",
+      message_type: 'Algo malio sal',
     };
     const axiosError: AxiosError = {
-      code: "ERR_BAD_REQUEST",
+      code: 'ERR_BAD_REQUEST',
       response: { data: error },
     } as AxiosError;
 

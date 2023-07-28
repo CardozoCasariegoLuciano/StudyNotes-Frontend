@@ -1,13 +1,13 @@
-import { useForm } from "lccform";
-import { ChangeEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import SimpleCheckBox from "../../components/FormsElements/CheckBox/SimpleCheckBox";
-import SimpleInput from "../../components/FormsElements/Input/SimpleInput";
-import Logo from "../../components/Logo/Logo";
-import { SimpleButton } from "../../components/StyledComponents/Button/SimpleButton";
-import useAuth from "../../hooks/useAuth";
-import { useShowAlert } from "../../hooks/useShowAlert";
-import styles from "./authStyles.module.scss";
+import { useForm } from 'lccform';
+import { ChangeEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import SimpleCheckBox from '../../components/FormsElements/CheckBox/SimpleCheckBox';
+import SimpleInput from '../../components/FormsElements/Input/SimpleInput';
+import Logo from '../../components/Logo/Logo';
+import { SimpleButton } from '../../components/StyledComponents/Button/SimpleButton';
+import useAuth from '../../hooks/useAuth';
+import { useShowAlert } from '../../hooks/useShowAlert';
+import styles from './authStyles.module.scss';
 
 const LoginPage = () => {
   const { showAlert, showModal } = useShowAlert();
@@ -15,14 +15,14 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const form = useForm(
     {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       remember: false,
     },
     {
       email: { required: true, email: true },
       password: { required: true, min: 5, max: 30 },
-    }
+    },
   );
 
   const submit = async (eve: ChangeEvent<HTMLFormElement>) => {
@@ -32,7 +32,7 @@ const LoginPage = () => {
     const error = await login(form.formState);
     if (!error) {
       form.onResetForm();
-      navigate("/home");
+      navigate('/home');
     } else {
       showModal(error.message);
     }

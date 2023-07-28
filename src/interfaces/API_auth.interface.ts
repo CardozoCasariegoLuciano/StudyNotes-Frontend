@@ -1,4 +1,4 @@
-import { APIError } from "./API_response.interface";
+import { APIError } from './API_response.interface';
 
 export type RegisterFormData = {
   name: string;

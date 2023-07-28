@@ -1,4 +1,4 @@
-import { UserContextValues } from "./userContext.interface";
+import { UserContextValues } from './userContext.interface';
 
 export interface APISuccessUser {
   data: UserContextValues;

@@ -1,4 +1,4 @@
-import styles from "./home.module.scss";
+import styles from './home.module.scss';
 
 type HomePropType = {};
 

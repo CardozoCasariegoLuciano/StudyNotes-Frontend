@@ -1,6 +1,6 @@
 //const backendHost = "http://localhost:5000";
-const backendHost = "http://192.168.1.45:5000";
-const baseURL = "api/v1";
+const backendHost = 'http://192.168.1.45:5000';
+const baseURL = 'api/v1';
 
 export const UrlBank = {
   auth: {
@@ -9,6 +9,6 @@ export const UrlBank = {
   },
 
   user:{
-    getUser:`${backendHost}/${baseURL}/user/`
-  }
+    getUser:`${backendHost}/${baseURL}/user/`,
+  },
 };

@@ -2,7 +2,7 @@ interface LogoProps {
   margin?: string;
 }
 
-export const LogoSmallInLine = ({ margin }: LogoProps) => (
+export const LogoSmallInLine = ({ margin }: LogoProps) =>
   <svg
     width="106"
     height="26"
@@ -27,4 +27,4 @@ export const LogoSmallInLine = ({ margin }: LogoProps) => (
       </clipPath>
     </defs>
   </svg>
-);
+;

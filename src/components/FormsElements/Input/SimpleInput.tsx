@@ -1,8 +1,8 @@
-import { ChangeEvent, useState } from "react";
-import { InputContainer } from "../../StyledComponents/Containers/InputContainer";
-import { Input } from "../../StyledComponents/Input/Input";
-import Svg from "../../SVGs/Svg";
-import styles from "./simpleInput.module.scss";
+import { ChangeEvent, useState } from 'react';
+import { InputContainer } from '../../StyledComponents/Containers/InputContainer';
+import { Input } from '../../StyledComponents/Input/Input';
+import Svg from '../../SVGs/Svg';
+import styles from './simpleInput.module.scss';
 
 type SimpleInputPropType = {
   placeHolder?: string;
@@ -19,7 +19,7 @@ type SimpleInputPropType = {
 };
 
 const SimpleInput = (props: SimpleInputPropType) => {
-  const [svgEye, setSvgEye] = useState("EyeOpen");
+  const [svgEye, setSvgEye] = useState('EyeOpen');
   const [inputType, setInputType] = useState(props.type);
 
   const labelName = props.label
@@ -34,12 +34,12 @@ const SimpleInput = (props: SimpleInputPropType) => {
     : `Write your ${props.name} here`;
 
   const toggleInputType = () => {
-    if (inputType === "text") {
-      setInputType("password");
-      setSvgEye("EyeOpen");
+    if (inputType === 'text') {
+      setInputType('password');
+      setSvgEye('EyeOpen');
     } else {
-      setInputType("text");
-      setSvgEye("EyeClose");
+      setInputType('text');
+      setSvgEye('EyeClose');
     }
   };
 
@@ -63,27 +63,27 @@ const SimpleInput = (props: SimpleInputPropType) => {
           />
         </div>
         <div className={styles.SimpleInput__actions}>
-          {props.value && props.type === "password" && (
+          {props.value && props.type === 'password' &&
             <div
               onClick={() => toggleInputType()}
               className={styles.SimpleInput__SVG}
             >
               <Svg svgName={svgEye} />
             </div>
-          )}
-          {props.value && (
+          }
+          {props.value &&
             <div
               onClick={() => props.onCleanInput(props.name)}
               className={styles.SimpleInput__SVG}
             >
               <Svg svgName="X" />
             </div>
-          )}
+          }
         </div>
       </InputContainer>
-      {errorMessagge && (
+      {errorMessagge &&
         <p className={styles.SimpleInput__error}>{errorMessagge}</p>
-      )}
+      }
     </div>
   );
 };

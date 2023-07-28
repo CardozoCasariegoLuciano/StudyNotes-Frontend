@@ -1,17 +1,17 @@
-import { lazy, Suspense } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 //Guards
-import AdminRoutes from "./guards/AdminRoutes";
-import AuthRoutes from "./guards/AuthRoutes";
-import ErrorRoutes from "./guards/ErrorRoutes";
-import FreeRoutes from "./guards/FreeRoutes";
-import UserRoutes from "./guards/UserRoutes";
+import AdminRoutes from './guards/AdminRoutes';
+import AuthRoutes from './guards/AuthRoutes';
+import ErrorRoutes from './guards/ErrorRoutes';
+import FreeRoutes from './guards/FreeRoutes';
+import UserRoutes from './guards/UserRoutes';
 
 //Pages
-const Home = lazy(() => import("../pages/Home/Home"));
-const LoginPage = lazy(() => import("../pages/Auth/LoginPage"));
-const RegisterPage = lazy(() => import("../pages/Auth/RegisterPage"));
+const Home = lazy(() => import('../pages/Home/Home'));
+const LoginPage = lazy(() => import('../pages/Auth/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/Auth/RegisterPage'));
 
 const AppRouter = () => {
   return (

@@ -1,12 +1,12 @@
-import Logo from "../../components/Logo/Logo";
-import { SimpleButton } from "../../components/StyledComponents/Button/SimpleButton";
-import { Link, useNavigate } from "react-router-dom";
-import { ChangeEvent } from "react";
-import { useShowAlert } from "../../hooks/useShowAlert";
-import SimpleInput from "../../components/FormsElements/Input/SimpleInput";
-import useAuth from "../../hooks/useAuth";
-import styles from "./authStyles.module.scss";
-import { useForm } from "lccform";
+import Logo from '../../components/Logo/Logo';
+import { SimpleButton } from '../../components/StyledComponents/Button/SimpleButton';
+import { Link, useNavigate } from 'react-router-dom';
+import { ChangeEvent } from 'react';
+import { useShowAlert } from '../../hooks/useShowAlert';
+import SimpleInput from '../../components/FormsElements/Input/SimpleInput';
+import useAuth from '../../hooks/useAuth';
+import styles from './authStyles.module.scss';
+import { useForm } from 'lccform';
 
 const RegisterPage = () => {
   const { showAlert, showModal } = useShowAlert();
@@ -14,17 +14,17 @@ const RegisterPage = () => {
   const navigate = useNavigate();
   const form = useForm(
     {
-      name: "",
-      email: "",
-      password: "",
-      confirmation: "",
+      name: '',
+      email: '',
+      password: '',
+      confirmation: '',
     },
     {
       name: { required: true },
       email: { required: true, email: true },
       password: { required: true, min: 5, max: 30 },
-      confirmation: { required: true, equalTo: "password" },
-    }
+      confirmation: { required: true, equalTo: 'password' },
+    },
   );
 
   const submit = async (eve: ChangeEvent<HTMLFormElement>) => {
@@ -34,7 +34,7 @@ const RegisterPage = () => {
     const error = await register(form.formState);
     if (!error) {
       form.onResetForm();
-      navigate("/home");
+      navigate('/home');
     } else {
       showModal(error.message);
     }

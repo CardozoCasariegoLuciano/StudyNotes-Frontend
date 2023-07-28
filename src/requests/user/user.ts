@@ -1,10 +1,10 @@
-import axios, { AxiosError } from "axios";
-import { manageAPIErrors } from "../../helpers/apiErrors";
-import { UrlBank } from "../../helpers/URLs";
+import axios, { AxiosError } from 'axios';
+import { manageAPIErrors } from '../../helpers/apiErrors';
+import { UrlBank } from '../../helpers/URLs';
 import {
   APISuccessUser,
   getUserReturnData,
-} from "../../interfaces/API_user.interface";
+} from '../../interfaces/API_user.interface';
 
 export const getUser = async (token: string): getUserReturnData => {
   try {

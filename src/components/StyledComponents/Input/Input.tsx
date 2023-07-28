@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import "../../../variables.scss";
+import styled from 'styled-components';
+import '../../../variables.scss';
 
 export const Input = styled.input`
   border: none;

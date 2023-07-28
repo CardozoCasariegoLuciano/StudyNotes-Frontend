@@ -1,5 +1,5 @@
-import Svg from "../SVGs/Svg";
-import styles from "./menuItem.module.scss";
+import Svg from '../SVGs/Svg';
+import styles from './menuItem.module.scss';
 
 type MenuItemPropType = {
   svg: string;
@@ -13,7 +13,7 @@ const MenuItem = (props: MenuItemPropType) => {
   return (
     <div
       className={`${styles.MenuItem} ${
-        props.separator ? styles.separator : ""
+        props.separator ? styles.separator : ''
       }`}
       onClick={props.action}
     >

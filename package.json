@@ -7,6 +7,9 @@
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "lint": "eslint .",
+    "pipeline-lint": "eslint --config ./.github/workflows/.eslintrc.action.cjs .",
+    "lint-fix": "eslint . --fix",
     "test": "jest",
     "test:w": "jest --watchAll",
     "test:cache": "jest --clearCache"

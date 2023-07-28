@@ -1,13 +1,13 @@
-import { Navigate, Outlet } from "react-router-dom";
-import { Roles } from "../../helpers/roles.enum";
-import useUser from "../../hooks/useUser";
-import HeaderAndFooter from "../../layouts/HeaderAndFooter";
+import { Navigate, Outlet } from 'react-router-dom';
+import { Roles } from '../../helpers/roles.enum';
+import useUser from '../../hooks/useUser';
+import HeaderAndFooter from '../../layouts/HeaderAndFooter';
 
 type AdminRoutesPropType = {
   redirectPath?: string;
 };
 
-const AdminRoutes = ({ redirectPath = "/" }: AdminRoutesPropType) => {
+const AdminRoutes = ({ redirectPath = '/' }: AdminRoutesPropType) => {
   const { isLoggued, user } = useUser();
 
   const validRole =

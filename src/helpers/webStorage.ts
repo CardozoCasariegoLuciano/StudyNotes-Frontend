@@ -1,7 +1,7 @@
 export const setStorage = (
   key: string,
   data: string,
-  toLocalStorage: boolean
+  toLocalStorage: boolean,
 ) => {
   if (toLocalStorage) {
     localStorage.setItem(key, data);

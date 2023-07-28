@@ -1,7 +1,7 @@
-import { HTMLAttributes } from "react";
-import { LogoMediumDouble } from "./LogosGalery/DoubleLine/LogoMedium";
-import { LogoMediumInLine } from "./LogosGalery/OneLine/LogoMedium";
-import { LogoSmallInLine } from "./LogosGalery/OneLine/LogoSmall";
+import { HTMLAttributes } from 'react';
+import { LogoMediumDouble } from './LogosGalery/DoubleLine/LogoMedium';
+import { LogoMediumInLine } from './LogosGalery/OneLine/LogoMedium';
+import { LogoSmallInLine } from './LogosGalery/OneLine/LogoSmall';
 
 interface LogoProps extends HTMLAttributes<HTMLDivElement> {
   margin?: string;
@@ -25,21 +25,21 @@ const getLogo = ({
 }: LogoProps): JSX.Element => {
   if (!inLine) {
     switch (size) {
-      case 2:
-        return LogoMediumDouble({ margin });
-      default:
-        return <></>;
+    case 2:
+      return LogoMediumDouble({ margin });
+    default:
+      return <></>;
     }
   }
 
   if (inLine) {
     switch (size) {
-      case 2:
-        return LogoMediumInLine({ margin });
-      case 3:
-        return LogoSmallInLine({ margin });
-      default:
-        return <></>;
+    case 2:
+      return LogoMediumInLine({ margin });
+    case 3:
+      return LogoSmallInLine({ margin });
+    default:
+      return <></>;
     }
   }
   return <></>;
