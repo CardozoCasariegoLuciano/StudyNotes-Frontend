@@ -6,7 +6,7 @@ type UserRoutesPropType = {
   redirectPath?: string;
 };
 
-const UserRoutes = ({ redirectPath = "/" }: UserRoutesPropType) => {
+const UserRoutes = ({ redirectPath = "/auth" }: UserRoutesPropType) => {
   const { isLoggued } = useUser();
 
   if (!isLoggued) {

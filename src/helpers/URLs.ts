@@ -7,4 +7,8 @@ export const UrlBank = {
     register: `${backendHost}/${baseURL}/auth/register`,
     login: `${backendHost}/${baseURL}/auth/login`,
   },
+
+  user:{
+    getUser:`${backendHost}/${baseURL}/user/`
+  }
 };
