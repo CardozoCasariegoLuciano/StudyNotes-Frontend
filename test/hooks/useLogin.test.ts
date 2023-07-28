@@ -50,6 +50,7 @@ describe("useLogin Test cases", () => {
     const loginData: LoginFormData = {
       email: "a@a.com",
       password: "123123",
+      remember: true,
     };
 
     await result.current.login(loginData);

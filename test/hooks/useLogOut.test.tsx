@@ -7,9 +7,9 @@ import useAuth from "../../src/hooks/useAuth";
 
 const wrapper = ({ children }) => {
   return (
-    <UserProvider>
-      <BrowserRouter>{children}</BrowserRouter>
-    </UserProvider>
+    <BrowserRouter>
+      <UserProvider>{children}</UserProvider>
+    </BrowserRouter>
   );
 };
 

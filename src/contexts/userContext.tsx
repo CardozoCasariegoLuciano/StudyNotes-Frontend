@@ -1,10 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-import { Roles } from "../helpers/roles.enum";
+import { useNavigate } from "react-router-dom";
 import { getStorage } from "../helpers/webStorage";
 import {
   UserContextValues,
   UserProviderData,
 } from "../interfaces/userContext.interface";
+import { getUser } from "../requests/user/user";
 
 type ProviderProps = {
   children: JSX.Element;
@@ -15,6 +16,7 @@ export const UserContext = createContext({});
 export const UserProvider = ({ children }: ProviderProps) => {
   const [user, setUser] = useState<UserContextValues | null>(null);
   const [isLoggued, setIsLogged] = useState(false);
+  const navigate = useNavigate();
 
   const logOut = () => {
     setIsLogged(false);
@@ -28,16 +30,19 @@ export const UserProvider = ({ children }: ProviderProps) => {
     }
 
     if (user === null) {
-      setUser({
-        name: "Fulanito",
-        email: "fulano@email.com",
-        role: Roles.ADMIN,
-        image: "",
-        id: 1,
-      });
-      setIsLogged(true);
+      getUserData(token);
     }
   }, []);
+
+  const getUserData = async (token: string) => {
+    const { errorCode, user } = await getUser(token);
+    if (errorCode) {
+      navigate(`/error?errorcode=${errorCode}`);
+      return;
+    }
+    setUser(user!);
+    setIsLogged(true);
+  };
 
   const data: UserProviderData = { user, isLoggued, logOut };
 

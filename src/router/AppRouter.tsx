@@ -17,14 +17,15 @@ const AppRouter = () => {
   return (
     <Suspense fallback={<div>...cargando</div>}>
       <Routes>
-        {/*Free routes*/}
-        <Route path="/" element={<FreeRoutes />}>
-          <Route path="/" element={<Home />} />
-        </Route>
-
         {/*Routes for logged users*/}
         <Route path="/" element={<UserRoutes />}>
+          <Route path="/" element={<Home />} />
           <Route path="/acount" element={<h1>Acount</h1>} />
+        </Route>
+
+        {/*Free routes*/}
+        <Route path="/" element={<FreeRoutes />}>
+          <Route path="/first" element={<h1>intro</h1>} />
         </Route>
 
         {/*Routes for admin users*/}
@@ -42,6 +43,7 @@ const AppRouter = () => {
 
         {/*Error routes*/}
         <Route path="/error" element={<ErrorRoutes />}>
+          <Route path="/error" element={<h1>Crear una pagina que tome el error de las querys</h1>} />
           <Route path="test4" element={<h1>Not found</h1>} />
           <Route path="test5" element={<h1>Internet cut</h1>} />
         </Route>
