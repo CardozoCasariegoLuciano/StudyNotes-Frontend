@@ -9,6 +9,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
   ],
+  ignorePatterns: ['node_modules/', 'dist/'],
   overrides: [
     {
       env: {
@@ -27,15 +28,15 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'react'],
   rules: {
-    'indent': ['error', 2],
+    indent: ['error', 2],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'linebreak-style': ['error', 'unix'],
-    'no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'comma-dangle': ['error', 'always-multiline'],
-    'comma-spacing': ['error', {before: false, after: true}],
+    'comma-spacing': ['error', { before: false, after: true }],
     'no-extra-parens': 'error',
-    'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 3, 'maxBOF': 0}],
+    'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 3, maxBOF: 0 }],
     'no-multi-spaces': 'error',
     'no-trailing-spaces': 'error',
     'space-in-parens': ['error', 'never'],
@@ -47,7 +48,7 @@ module.exports = {
     'no-var': 'error',
     'prefer-template': 'error',
     'require-await': 'error',
-    'no-console': "error",
+    'no-console': 'error',
 
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',

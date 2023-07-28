@@ -9,6 +9,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
   ],
+  ignorePatterns: ['node_modules/', 'dist/'],
   overrides: [
     {
       env: {
