@@ -1,4 +1,4 @@
-import { APIError } from "./API_response.interface";
+import { APIError } from './API_response.interface';
 
 export type RegisterFormData = {
   name: string;
@@ -14,8 +14,8 @@ export type LoginFormData = {
 };
 
 export type AuthReuslt = {
-  login: (formData: LoginFormData) => Promise<APIError | null>;
-  register: (formData: RegisterFormData) => Promise<APIError | null>;
+  login: (_formData: LoginFormData) => Promise<APIError | null>;
+  register: (_formData: RegisterFormData) => Promise<APIError | null>;
   logOut: () => void;
 };
 

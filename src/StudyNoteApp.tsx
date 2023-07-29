@@ -1,5 +1,5 @@
-import { UserProvider } from "./contexts/userContext";
-import AppRouter from "./router/AppRouter";
+import { UserProvider } from './contexts/userContext';
+import AppRouter from './router/AppRouter';
 
 const StudyNoteApp = () => {
   return (

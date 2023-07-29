@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import "../../../variables.scss";
+import styled from 'styled-components';
+import '../../../variables.scss';
 
-export const CheckBox = styled.input.attrs({ type: "checkbox" })`
+export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
   appearance: none;
   height: 20px;
   width: 20px;

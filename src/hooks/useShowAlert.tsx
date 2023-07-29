@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 
 type Ialert = {
   isVisible: boolean;
@@ -7,29 +7,31 @@ type Ialert = {
 
 const alertStyles = {
   container: {
-    border: "1px solid red",
-    backgroundColor: "tomato",
-    padding: "5px 20px",
-    borderRadius: "8px",
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "15px",
-    color: "white",
+    border: '1px solid red',
+    backgroundColor: 'tomato',
+    padding: '5px 20px',
+    borderRadius: '8px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    gap: '15px',
+    color: 'white',
   },
   X: {
-    cursor: "pointer",
+    cursor: 'pointer',
   },
 };
 
-export const useShowAlert = (time: number = 5500) => {
+const DEFAULT_TIME_OUT_TIME = 5500;
+
+export const useShowAlert = (time: number = DEFAULT_TIME_OUT_TIME) => {
   const timeoutRef = useRef<number | undefined>();
   const [modal, setModal] = useState<Ialert>({
     isVisible: false,
-    text: "",
+    text: '',
   });
 
   const cleanAlert = () => {
-    setModal({ isVisible: false, text: "" });
+    setModal({ isVisible: false, text: '' });
   };
 
   const showModal = (value: string): void => {
@@ -41,7 +43,7 @@ export const useShowAlert = (time: number = 5500) => {
   };
 
   const showAlert = () => {
-    const alert = (
+    const alert =
       <div style={alertStyles.container}>
         <p>{modal.text} </p>
         <span
@@ -54,7 +56,8 @@ export const useShowAlert = (time: number = 5500) => {
           X
         </span>
       </div>
-    );
+    ;
+
     return modal.isVisible && alert;
   };
 

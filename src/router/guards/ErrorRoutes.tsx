@@ -1,8 +1,6 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
-type ErrorRoutesPropType = {};
-
-const ErrorRoutes = ({}: ErrorRoutesPropType) => {
+const ErrorRoutes = () => {
   return <Outlet />;
 };
 

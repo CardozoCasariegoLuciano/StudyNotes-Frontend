@@ -1,13 +1,11 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Logo from "../Logo/Logo";
-import DropdownMenu from "./DropdownMenu";
-import styles from "./header.module.scss";
-import { UserSection } from "./UserSection";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Logo from '../Logo/Logo';
+import DropdownMenu from './DropdownMenu';
+import styles from './header.module.scss';
+import { UserSection } from './UserSection';
 
-type HeaderPropType = {};
-
-const Header = ({}: HeaderPropType) => {
+const Header = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -18,8 +16,8 @@ const Header = ({}: HeaderPropType) => {
           <Logo
             inLine={true}
             size={3}
-            onClick={() => navigate("/")}
-            style={{ cursor: "pointer" }}
+            onClick={() => navigate('/')}
+            style={{ cursor: 'pointer' }}
           />
           <UserSection onClick={() => setShowMenu(!showMenu)} />
         </div>

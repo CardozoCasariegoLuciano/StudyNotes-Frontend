@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { Roles } from "../../helpers/roles.enum";
-import useAuth from "../../hooks/useAuth";
-import useUser from "../../hooks/useUser";
-import styles from "./header.module.scss";
-import MenuItem from "./MenuItem";
+import { useNavigate } from 'react-router-dom';
+import { Roles } from '../../helpers/roles.enum';
+import useAuth from '../../hooks/useAuth';
+import useUser from '../../hooks/useUser';
+import styles from './header.module.scss';
+import MenuItem from './MenuItem';
 
 type DropdownMenuPropType = {
   showMenu: boolean;
@@ -19,13 +19,13 @@ const DropdownMenu = (props: DropdownMenuPropType) => {
     <div className={styles.header__dropdown}>
       <div
         className={`${styles.header__dropdown_Menu} ${
-          props.showMenu ? "" : styles.hideMenu
+          props.showMenu ? '' : styles.hideMenu
         } `}
       >
         <div
           className={`
             ${styles.headerMenu}
-            ${user?.role == Roles.ADMIN ? styles.adminSize : ""}
+            ${user?.role == Roles.ADMIN ? styles.adminSize : ''}
 
             `}
         >
@@ -38,19 +38,19 @@ const DropdownMenu = (props: DropdownMenuPropType) => {
               separator={true}
             />
 
-            {user?.role == Roles.ADMIN && (
+            {user?.role == Roles.ADMIN &&
               <MenuItem
                 text="Dashboard"
                 svg="Cog"
-                action={() => navigate("/admin/dashboard")}
+                action={() => navigate('/admin/dashboard')}
                 separator={true}
               />
-            )}
+            }
 
             <MenuItem
               text="Acount"
               svg="Acount"
-              action={() => navigate("/acount")}
+              action={() => navigate('/acount')}
             />
 
             <MenuItem text="Logout" svg="Logout" action={() => auth.logOut()} />

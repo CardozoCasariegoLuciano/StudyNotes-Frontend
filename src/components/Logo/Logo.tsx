@@ -1,7 +1,7 @@
-import { HTMLAttributes } from "react";
-import { LogoMediumDouble } from "./LogosGalery/DoubleLine/LogoMedium";
-import { LogoMediumInLine } from "./LogosGalery/OneLine/LogoMedium";
-import { LogoSmallInLine } from "./LogosGalery/OneLine/LogoSmall";
+import { HTMLAttributes } from 'react';
+import { LogoMediumDouble } from './LogosGalery/DoubleLine/LogoMedium';
+import { LogoMediumInLine } from './LogosGalery/OneLine/LogoMedium';
+import { LogoSmallInLine } from './LogosGalery/OneLine/LogoSmall';
 
 interface LogoProps extends HTMLAttributes<HTMLDivElement> {
   margin?: string;
@@ -9,9 +9,13 @@ interface LogoProps extends HTMLAttributes<HTMLDivElement> {
   inLine?: boolean;
 }
 
+const largeSize = 1;
+const mediumSize = 2;
+const smallSize = 3;
+
 const Logo = ({
   margin,
-  size = 2,
+  size = mediumSize,
   inLine = false,
   ...rest
 }: LogoProps): JSX.Element => {
@@ -20,12 +24,12 @@ const Logo = ({
 
 const getLogo = ({
   margin,
-  size = 2,
+  size = mediumSize,
   inLine = false,
 }: LogoProps): JSX.Element => {
   if (!inLine) {
     switch (size) {
-      case 2:
+      case mediumSize:
         return LogoMediumDouble({ margin });
       default:
         return <></>;
@@ -34,9 +38,11 @@ const getLogo = ({
 
   if (inLine) {
     switch (size) {
-      case 2:
+      case largeSize:
+        return <h1>Agregar este SVG</h1>;
+      case mediumSize:
         return LogoMediumInLine({ margin });
-      case 3:
+      case smallSize:
         return LogoSmallInLine({ margin });
       default:
         return <></>;

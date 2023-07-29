@@ -1,12 +1,12 @@
-import { ChangeEvent } from "react";
-import { CheckBox } from "../../StyledComponents/CheckBox/CheckBox";
-import styles from "./SimpleCheckBox.module.scss";
+import { ChangeEvent } from 'react';
+import { CheckBox } from '../../StyledComponents/CheckBox/CheckBox';
+import styles from './SimpleCheckBox.module.scss';
 
 type SimpleCheckBoxPropType = {
   label?: string;
   labelLeft?: boolean;
   defaultCheck?: boolean;
-  onChange?: (ev: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (_ev: ChangeEvent<HTMLInputElement>) => void;
   name: string;
 };
 

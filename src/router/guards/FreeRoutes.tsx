@@ -1,9 +1,7 @@
-import { Outlet } from "react-router-dom";
-import HeaderAndFooter from "../../layouts/HeaderAndFooter";
+import { Outlet } from 'react-router-dom';
+import HeaderAndFooter from '../../layouts/HeaderAndFooter';
 
-type FreeRoutesPropType = {};
-
-const FreeRoutes = ({}: FreeRoutesPropType) => {
+const FreeRoutes = () => {
   return (
     <HeaderAndFooter>
       <Outlet />

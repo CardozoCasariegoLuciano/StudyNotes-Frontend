@@ -1,11 +1,11 @@
-import { Navigate, Outlet } from "react-router-dom";
-import useUser from "../../hooks/useUser";
+import { Navigate, Outlet } from 'react-router-dom';
+import useUser from '../../hooks/useUser';
 
 type AuthRoutesPropType = {
   redirectPath?: string;
 };
 
-const AuthRoutes = ({ redirectPath = "/" }: AuthRoutesPropType) => {
+const AuthRoutes = ({ redirectPath = '/' }: AuthRoutesPropType) => {
   const { isLoggued } = useUser();
 
   if (isLoggued) {

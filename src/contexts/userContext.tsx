@@ -1,11 +1,11 @@
-import { createContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getStorage } from "../helpers/webStorage";
+import { createContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getStorage } from '../helpers/webStorage';
 import {
   UserContextValues,
   UserProviderData,
-} from "../interfaces/userContext.interface";
-import { getUser } from "../requests/user/user";
+} from '../interfaces/userContext.interface';
+import { getUser } from '../requests/user/user';
 
 type ProviderProps = {
   children: JSX.Element;
@@ -24,7 +24,7 @@ export const UserProvider = ({ children }: ProviderProps) => {
   };
 
   useEffect(() => {
-    const token = getStorage("token");
+    const token = getStorage('token');
     if (token === null) {
       return;
     }

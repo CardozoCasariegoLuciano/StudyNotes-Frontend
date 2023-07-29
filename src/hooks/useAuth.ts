@@ -1,20 +1,22 @@
-import axios, { AxiosError } from "axios";
-import { useNavigate } from "react-router-dom";
-import { manageAPIErrors } from "../helpers/apiErrors";
-import { UrlBank } from "../helpers/URLs";
-import { removeStorage, setStorage } from "../helpers/webStorage";
+import axios, { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { manageAPIErrors } from '../helpers/apiErrors';
+import { UrlBank } from '../helpers/URLs';
+import { removeStorage, setStorage } from '../helpers/webStorage';
 import {
   APISuccessLogin,
   APISuccessRegister,
   AuthReuslt,
   LoginFormData,
   RegisterFormData,
-} from "../interfaces/API_auth.interface";
-import { APIError } from "../interfaces/API_response.interface";
-import useUser from "./useUser";
+} from '../interfaces/API_auth.interface';
+import { APIError } from '../interfaces/API_response.interface';
+import useUser from './useUser';
+
+//TODO subir al repo la config de nvim y guardar mi config del .eslintrc.json
 
 const useAuth = (): AuthReuslt => {
-  const { logOut: logout} = useUser();
+  const { logOut: logout } = useUser();
   const navigate = useNavigate();
   let apiError: APIError | null = null;
 
@@ -28,7 +30,7 @@ const useAuth = (): AuthReuslt => {
       const axiosResp = await axios.post(UrlBank.auth.login, reqBody);
       const res = axiosResp.data as APISuccessLogin;
 
-      setStorage("token", JSON.stringify(res.data.token), loginData.remember);
+      setStorage('token', JSON.stringify(res.data.token), loginData.remember);
 
       apiError = null;
     } catch (err) {
@@ -38,7 +40,7 @@ const useAuth = (): AuthReuslt => {
   };
 
   const register = async (
-    formData: RegisterFormData
+    formData: RegisterFormData,
   ): Promise<APIError | null> => {
     try {
       const registerData = {
@@ -50,11 +52,10 @@ const useAuth = (): AuthReuslt => {
 
       const axiosResponse = await axios.post(
         UrlBank.auth.register,
-        registerData
+        registerData,
       );
       const resp = axiosResponse?.data as APISuccessRegister;
-
-      setStorage("token", JSON.stringify(resp.data.token), true);
+      setStorage('token', JSON.stringify(resp.data.token), true);
 
       apiError = null;
     } catch (err) {
@@ -64,9 +65,9 @@ const useAuth = (): AuthReuslt => {
   };
 
   const logOut = () => {
-    removeStorage("token");
+    removeStorage('token');
     logout();
-    navigate("/auth/login");
+    navigate('/auth/login');
   };
 
   return { login, register, logOut };
