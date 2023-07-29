@@ -10,11 +10,11 @@ type SimpleInputPropType = {
   type: string;
   styles?: { [key: string]: string };
   value: string | number;
-  onChange: (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onBlur: (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange: (_ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onBlur: (_ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   icon?: string;
   errorMessage?: { [key: string]: string };
-  onCleanInput: (name: string) => void;
+  onCleanInput: (_name: string) => void;
   label?: string;
 };
 
@@ -24,6 +24,7 @@ const SimpleInput = (props: SimpleInputPropType) => {
 
   const labelName = props.label
     ? props.label
+    // eslint-disable-next-line no-magic-numbers
     : props.name.charAt(0).toUpperCase() + props.name.slice(1);
   const inputID = `id_${props.name}`;
   const errorMessagge =

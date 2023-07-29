@@ -13,9 +13,7 @@ import {
 import { APIError } from '../interfaces/API_response.interface';
 import useUser from './useUser';
 
-//TODO Ver como aplicar la regla no-console y el error en el unused-variable error solo cuado de hace el lint para la pipe de merge
 //TODO subir al repo la config de nvim y guardar mi config del .eslintrc.json
-//TODO que en pipeline corra el linter
 
 const useAuth = (): AuthReuslt => {
   const { logOut: logout } = useUser();
@@ -27,9 +25,6 @@ const useAuth = (): AuthReuslt => {
       email: loginData.email,
       password: loginData.password,
     };
-
-    console.log('Holaaaa');
-    const name = 123;
 
     try {
       const axiosResp = await axios.post(UrlBank.auth.login, reqBody);

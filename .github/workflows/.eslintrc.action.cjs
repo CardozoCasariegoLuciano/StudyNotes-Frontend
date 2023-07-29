@@ -28,7 +28,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'react'],
   rules: {
-    indent: ['error', 2],
+    indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'linebreak-style': ['error', 'unix'],
@@ -43,13 +43,21 @@ module.exports = {
     'no-dupe-else-if': 'error',
     'no-duplicate-imports': 'error',
     'default-case': 'error',
-    'no-magic-numbers': 'error',
+    'no-magic-numbers': [
+      'error',
+      {
+        ignoreDefaultValues: true,
+        ignoreArrayIndexes: true,
+        ignoreClassFieldInitialValues: true,
+      },
+    ],
     'no-nested-ternary': 'error',
     'no-var': 'error',
     'prefer-template': 'error',
     'require-await': 'error',
     'no-console': 'error',
 
+    '@typescript-eslint/no-unused-vars': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-uses-react': 'off',
     'react/no-unescaped-entities': 'off',

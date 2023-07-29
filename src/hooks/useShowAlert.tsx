@@ -21,7 +21,9 @@ const alertStyles = {
   },
 };
 
-export const useShowAlert = (time: number = 5500) => {
+const DEFAULT_TIME_OUT_TIME = 5500;
+
+export const useShowAlert = (time: number = DEFAULT_TIME_OUT_TIME) => {
   const timeoutRef = useRef<number | undefined>();
   const [modal, setModal] = useState<Ialert>({
     isVisible: false,
@@ -55,6 +57,7 @@ export const useShowAlert = (time: number = 5500) => {
         </span>
       </div>
     ;
+
     return modal.isVisible && alert;
   };
 

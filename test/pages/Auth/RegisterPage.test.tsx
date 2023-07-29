@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import { act, fireEvent, screen, waitFor } from '@testing-library/react';
 import axios from 'axios';
 import React from 'react';
@@ -46,7 +47,7 @@ describe('RegisterPage test cases', () => {
     expect(window.location.pathname).toBe('/home');
   });
 
-  test('Must keep in the same route if the form is invalid', async () => {
+  test('Must keep in the same route if the form is invalid', () => {
     const axiosPostSpy = jest.spyOn(axios, 'post').mockResolvedValueOnce(null);
     render(<RegisterPage />, { route: '/auth/register' });
 

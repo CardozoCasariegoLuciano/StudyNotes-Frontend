@@ -5,9 +5,7 @@ import DropdownMenu from './DropdownMenu';
 import styles from './header.module.scss';
 import { UserSection } from './UserSection';
 
-type HeaderPropType = {};
-
-const Header = ({}: HeaderPropType) => {
+const Header = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 

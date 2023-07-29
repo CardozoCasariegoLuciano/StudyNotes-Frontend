@@ -18,7 +18,7 @@ describe('LogOut test cases', () => {
     jest.clearAllMocks();
   });
 
-  test('Should navigate to /auth/login', async () => {
+  test('Should navigate to /auth/login', () => {
     const { result } = renderHook(() => useAuth(), { wrapper: wrapper });
 
     act(() => {
@@ -28,7 +28,7 @@ describe('LogOut test cases', () => {
     expect(window.location.pathname).toBe('/auth/login');
   });
 
-  test('Should remove token from storage', async () => {
+  test('Should remove token from storage', () => {
     const { result } = renderHook(() => useAuth(), { wrapper: wrapper });
 
     const localStorageSpy = jest.spyOn(

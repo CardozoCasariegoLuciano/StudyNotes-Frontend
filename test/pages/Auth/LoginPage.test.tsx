@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import { render } from '../../testHelpers/functions';
 import LoginPage from '../../../src/pages/Auth/LoginPage';
 import React from 'react';
@@ -23,7 +24,7 @@ describe('LoginPage test cases', () => {
     expect(window.location.pathname).toBe('/auth/register');
   });
 
-  test('Must keep in the same route if the form is invalid', async () => {
+  test('Must keep in the same route if the form is invalid', () => {
     const axiosPostSpy = jest.spyOn(axios, 'post').mockResolvedValueOnce(null);
     render(<LoginPage />, { route: '/auth/login' });
 

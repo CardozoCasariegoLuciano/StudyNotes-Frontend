@@ -9,9 +9,13 @@ interface LogoProps extends HTMLAttributes<HTMLDivElement> {
   inLine?: boolean;
 }
 
+const largeSize = 1;
+const mediumSize = 2;
+const smallSize = 3;
+
 const Logo = ({
   margin,
-  size = 2,
+  size = mediumSize,
   inLine = false,
   ...rest
 }: LogoProps): JSX.Element => {
@@ -20,26 +24,28 @@ const Logo = ({
 
 const getLogo = ({
   margin,
-  size = 2,
+  size = mediumSize,
   inLine = false,
 }: LogoProps): JSX.Element => {
   if (!inLine) {
     switch (size) {
-    case 2:
-      return LogoMediumDouble({ margin });
-    default:
-      return <></>;
+      case mediumSize:
+        return LogoMediumDouble({ margin });
+      default:
+        return <></>;
     }
   }
 
   if (inLine) {
     switch (size) {
-    case 2:
-      return LogoMediumInLine({ margin });
-    case 3:
-      return LogoSmallInLine({ margin });
-    default:
-      return <></>;
+      case largeSize:
+        return <h1>Agregar este SVG</h1>;
+      case mediumSize:
+        return LogoMediumInLine({ margin });
+      case smallSize:
+        return LogoSmallInLine({ margin });
+      default:
+        return <></>;
     }
   }
   return <></>;

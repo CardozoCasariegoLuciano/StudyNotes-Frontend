@@ -1,4 +1,4 @@
-import { render, renderHook, screen, waitFor } from '@testing-library/react';
+import { render, renderHook } from '@testing-library/react';
 import {ReactElement} from 'react';
 import { act } from 'react-dom/test-utils';
 import { useShowAlert } from '../../src/hooks/useShowAlert';
@@ -40,7 +40,7 @@ describe('useShowAlert tests cases', () => {
     expect(result.current.isVisible).toBeFalsy();
   });
 
-  test('ShowAlert mush display the alert component', async () => {
+  test('ShowAlert mush display the alert component', () => {
     const time = 500;
     const text = 'TExT';
 

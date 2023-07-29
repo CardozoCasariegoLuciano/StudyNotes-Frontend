@@ -1,8 +1,4 @@
-import styles from './home.module.scss';
-
-type HomePropType = {};
-
-const Home = ({}: HomePropType) => {
+const Home = () => {
   return <div className="mainPage">Homeee</div>;
 };
 
