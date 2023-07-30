@@ -43,7 +43,7 @@ const RegisterPage = () => {
   return (
     <div className={styles.auth}>
       <div className={styles.auth__container}>
-        <Logo margin="20px 0px 50px 0px" />
+        <Logo margin="20px 0px 50px 0px"/>
         <form className={styles.auth__form} onSubmit={submit}>
           <div className={styles.auth_inputs}>
             <SimpleInput

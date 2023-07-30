@@ -13,6 +13,8 @@ const largeSize = 1;
 const mediumSize = 2;
 const smallSize = 3;
 
+//TODO terminar los SVGs que faltal
+
 const Logo = ({
   margin,
   size = mediumSize,
@@ -29,10 +31,14 @@ const getLogo = ({
 }: LogoProps): JSX.Element => {
   if (!inLine) {
     switch (size) {
+      case largeSize:
+        return <h1>Agregar este SVG</h1>;
       case mediumSize:
         return LogoMediumDouble({ margin });
+      case smallSize:
+        return <h1>Agregar este SVG</h1>;
       default:
-        return <></>;
+        return <>No valid size yet</>;
     }
   }
 
@@ -45,7 +51,7 @@ const getLogo = ({
       case smallSize:
         return LogoSmallInLine({ margin });
       default:
-        return <></>;
+        return <>No valid size yet</>;
     }
   }
   return <></>;

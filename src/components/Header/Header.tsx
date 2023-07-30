@@ -14,7 +14,7 @@ const Header = () => {
       <div className={styles.header_bar}>
         <div className={styles.header_bar__content}>
           <Logo
-            inLine={true}
+            inLine
             size={3}
             onClick={() => navigate('/')}
             style={{ cursor: 'pointer' }}

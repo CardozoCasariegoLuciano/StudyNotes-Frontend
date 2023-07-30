@@ -13,8 +13,6 @@ import {
 import { APIError } from '../interfaces/API_response.interface';
 import useUser from './useUser';
 
-//TODO subir al repo la config de nvim y guardar mi config del .eslintrc.json
-
 const useAuth = (): AuthReuslt => {
   const { logOut: logout } = useUser();
   const navigate = useNavigate();
