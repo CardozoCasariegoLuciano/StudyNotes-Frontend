@@ -55,3 +55,7 @@ de la tarea que estemos tratando
 #### Test
 ###### Para correr todos los test: `npm run test`
 
+#### Linter
+###### Para correr el linter `npm run lint`
+###### Para correr el linter que se ejecutara al intentar mergear a la rama dev o master `npm run pipeline-lint`
+###### Para fixear todos los problemas en el proyecto `npm run lint-fix` (dentro de lo que se pueda)
