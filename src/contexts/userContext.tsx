@@ -17,6 +17,7 @@ export const UserProvider = ({ children }: ProviderProps) => {
   const [user, setUser] = useState<UserContextValues | null>(null);
   const [isLoggued, setIsLogged] = useState(false);
   const navigate = useNavigate();
+  const token = getStorage('token');
 
   const logOut = () => {
     setIsLogged(false);
@@ -24,7 +25,6 @@ export const UserProvider = ({ children }: ProviderProps) => {
   };
 
   useEffect(() => {
-    const token = getStorage('token');
     if (token === null) {
       return;
     }
@@ -32,7 +32,7 @@ export const UserProvider = ({ children }: ProviderProps) => {
     if (user === null) {
       getUserData(token);
     }
-  }, []);
+  }, [token]);
 
   const getUserData = async (token: string) => {
     const { errorCode, user } = await getUser(token);

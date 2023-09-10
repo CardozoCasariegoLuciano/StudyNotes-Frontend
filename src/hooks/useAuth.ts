@@ -30,7 +30,7 @@ const useAuth = (): AuthReuslt => {
       const axiosResp = await axios.post(UrlBank.auth.login, reqBody);
       const res = axiosResp.data as APISuccessLogin;
 
-      setStorage('token', JSON.stringify(res.data.token), loginData.remember);
+      setStorage('token', res.data.token, loginData.remember);
 
       apiError = null;
     } catch (err) {
@@ -55,7 +55,7 @@ const useAuth = (): AuthReuslt => {
         registerData,
       );
       const resp = axiosResponse?.data as APISuccessRegister;
-      setStorage('token', JSON.stringify(resp.data.token), true);
+      setStorage('token', resp.data.token, false);
 
       apiError = null;
     } catch (err) {
