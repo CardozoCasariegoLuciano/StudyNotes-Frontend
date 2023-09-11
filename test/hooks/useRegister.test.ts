@@ -57,10 +57,7 @@ describe('useRegister Test cases', () => {
 
     await result.current.register(registerData);
 
-    expect(localStorageSpy).toHaveBeenCalledWith(
-      'token',
-      JSON.stringify(token),
-    );
+    expect(localStorageSpy).toHaveBeenCalledWith('token', token);
   });
 
   test('Should return an error if register was Wrong', async () => {

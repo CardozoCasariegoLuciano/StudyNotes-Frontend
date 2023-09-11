@@ -55,10 +55,7 @@ describe('useLogin Test cases', () => {
 
     await result.current.login(loginData);
 
-    expect(localStorageSpy).toHaveBeenCalledWith(
-      'token',
-      JSON.stringify(token),
-    );
+    expect(localStorageSpy).toHaveBeenCalledWith('token', token);
   });
 
   test('Should return an error if login was Wrong', async () => {
