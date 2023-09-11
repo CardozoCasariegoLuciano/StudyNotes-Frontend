@@ -1,10 +1,8 @@
-import { useForm } from 'lccform';
+import { Button, CheckBox, SimpleInput } from 'lcc-components-magui';
+import { useForm } from 'lcc-react-form';
 import { ChangeEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import SimpleCheckBox from '../../components/FormsElements/CheckBox/SimpleCheckBox';
-import SimpleInput from '../../components/FormsElements/Input/SimpleInput';
 import Logo from '../../components/Logo/Logo';
-import { SimpleButton } from '../../components/StyledComponents/Button/SimpleButton';
 import useAuth from '../../hooks/useAuth';
 import { useShowAlert } from '../../hooks/useShowAlert';
 import styles from './authStyles.module.scss';
@@ -32,11 +30,12 @@ const LoginPage = () => {
     const error = await login(form.formState);
     if (!error) {
       form.onResetForm();
-      navigate('/home');
+      navigate('/');
     } else {
       showModal(error.message);
     }
   };
+
   return (
     <>
       <div className={styles.auth}>
@@ -46,29 +45,31 @@ const LoginPage = () => {
             <div className={styles.auth_inputs}>
               <SimpleInput
                 type="text"
+                label="Email"
                 name="email"
                 icon="email"
                 value={form.email}
                 onChange={form.onInputChange}
                 onBlur={form.onBlur}
                 errorMessage={form.formErrors.email}
-                onCleanInput={form.onCleanInput}
+                cleanInput={() => form.onCleanInput('email')}
               />
 
               <SimpleInput
                 type="password"
+                label="Password"
                 name="password"
                 icon="lock"
                 value={form.password}
                 onChange={form.onInputChange}
                 onBlur={form.onBlur}
                 errorMessage={form.formErrors.password}
-                onCleanInput={form.onCleanInput}
+                cleanInput={() => form.onCleanInput('email')}
               />
 
               <div className={styles.auth__remember}>
                 <Link to="">Forgotten password</Link>
-                <SimpleCheckBox
+                <CheckBox
                   label="Remember me"
                   name="remember"
                   onChange={form.onCheckBoxChange}
@@ -77,7 +78,7 @@ const LoginPage = () => {
               <div className={styles.auth_alertContainer}>{showAlert()}</div>
             </div>
             <div className={styles.auth__actions}>
-              <SimpleButton disabled={form.hasErrors()}>Sing in</SimpleButton>
+              <Button disabled={form.hasErrors()}>Sing in</Button>
               <Link to="/auth/register">Don't have an account yet?</Link>
             </div>
           </form>

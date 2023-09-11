@@ -58,7 +58,7 @@ describe('LoginPage test cases', () => {
     fireEvent.click(loginButton);
 
     await waitFor(() => expect(axiosPostSpy).toHaveBeenCalledTimes(1));
-    expect(window.location.pathname).toBe('/home');
+    expect(window.location.pathname).toBe('/');
   });
 
   test('Must show a message when the login fail', async () => {

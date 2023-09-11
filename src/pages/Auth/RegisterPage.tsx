@@ -1,12 +1,11 @@
 import Logo from '../../components/Logo/Logo';
-import { SimpleButton } from '../../components/StyledComponents/Button/SimpleButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { ChangeEvent } from 'react';
 import { useShowAlert } from '../../hooks/useShowAlert';
-import SimpleInput from '../../components/FormsElements/Input/SimpleInput';
 import useAuth from '../../hooks/useAuth';
 import styles from './authStyles.module.scss';
-import { useForm } from 'lccform';
+import { useForm } from 'lcc-react-form';
+import { Button, SimpleInput } from 'lcc-components-magui';
 
 const RegisterPage = () => {
   const { showAlert, showModal } = useShowAlert();
@@ -34,7 +33,7 @@ const RegisterPage = () => {
     const error = await register(form.formState);
     if (!error) {
       form.onResetForm();
-      navigate('/home');
+      navigate('/');
     } else {
       showModal(error.message);
     }
@@ -49,50 +48,54 @@ const RegisterPage = () => {
             <SimpleInput
               type="text"
               name="name"
+              label="Name"
               icon="user"
               value={form.name}
               onChange={form.onInputChange}
               onBlur={form.onBlur}
               errorMessage={form.formErrors.name}
-              onCleanInput={form.onCleanInput}
+              cleanInput={() => form.onCleanInput('name')}
             />
 
             <SimpleInput
               type="text"
               name="email"
+              label="Email"
               icon="email"
               value={form.email}
               onChange={form.onInputChange}
               onBlur={form.onBlur}
               errorMessage={form.formErrors.email}
-              onCleanInput={form.onCleanInput}
+              cleanInput={() => form.onCleanInput('email')}
             />
 
             <SimpleInput
               type="password"
               name="password"
+              label="Password"
               icon="lock"
               value={form.password}
               onChange={form.onInputChange}
               onBlur={form.onBlur}
               errorMessage={form.formErrors.password}
-              onCleanInput={form.onCleanInput}
+              cleanInput={() => form.onCleanInput('password')}
             />
 
             <SimpleInput
               type="password"
               name="confirmation"
+              label="Repeat password"
               icon="lock"
               value={form.confirmation}
               onChange={form.onInputChange}
               onBlur={form.onBlur}
               errorMessage={form.formErrors.confirmation}
-              onCleanInput={form.onCleanInput}
+              cleanInput={() => form.onCleanInput('confirmation')}
             />
             {showAlert()}
           </div>
           <div className={styles.auth__actions}>
-            <SimpleButton disabled={form.hasErrors()}>Sing up</SimpleButton>
+            <Button disabled={form.hasErrors()}>Sing up</Button>
             <Link to="/auth/login">Already have an account</Link>
           </div>
         </form>

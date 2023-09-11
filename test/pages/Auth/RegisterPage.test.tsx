@@ -44,7 +44,7 @@ describe('RegisterPage test cases', () => {
     fireEvent.click(registerButton);
 
     await waitFor(() => expect(axiosPostSpy).toHaveBeenCalledTimes(1));
-    expect(window.location.pathname).toBe('/home');
+    expect(window.location.pathname).toBe('/');
   });
 
   test('Must keep in the same route if the form is invalid', () => {
